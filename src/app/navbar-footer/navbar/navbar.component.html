@@ -1,0 +1,60 @@
+<header>
+  <a routerLink="" class="logo"><p>My Music</p></a>
+
+  <ul #navbar class="navbar" id="myTopnav">
+    <li><a href="#toptrending">Top Trending</a></li>
+    <li><a routerLink="song">Songs</a></li>
+    <li><a routerLink="playlist">Playlist</a></li>
+    <li><a routerLink="singer">Singer</a></li>
+    <li><a routerLink='category'>Category</a></li>
+
+
+    <div class="searchBox">
+      <input type="text" placeholder="Search">
+      <div class="search">
+              <span class="icon">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+              </span>
+      </div>
+    </div>
+  </ul>
+
+  <div class="main" *ngIf="!checkLogin" >
+    <a routerLink="login" class="user">Sign In</a>
+    <a routerLink="register" style="margin-right: 40px">Register</a>
+  </div>
+
+  <div class="main" *ngIf="checkLogin">
+   <img src="{{avatar}}" width="45" height="45" style="border-radius: 50%">
+
+    <button style="margin-right: 35px" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+
+      <button mat-menu-item style="width: 250px">
+        <a routerLink="#"><img src="{{avatar}}" width="40" height="40" style="border-radius: 50%;margin-bottom: 7px"></a>
+        <a  style="font-size: 1.1rem;margin-left: 5px">{{name}}</a>
+      </button>
+
+      <hr>
+      <button mat-menu-item>
+        <mat-icon>manage_accounts</mat-icon>
+        <a routerLink="change-avatar" style="color: black">Change avatar</a>
+      </button>
+      <hr>
+      <button mat-menu-item>
+        <mat-icon>logout</mat-icon>
+        <a (click)="logOut()" style="font-size: 1.1rem;margin-right: 40px">Log Out</a>
+      </button>
+    </mat-menu>
+
+
+<!--    <a routerLink="change-avatar"><img src="{{avatar}}" width="40" height="40" style="border-radius: 50%"></a>-->
+<!--    <a  style="font-size: 1.1rem;margin-left: -20px">{{name}}</a>-->
+<!--    <a (click)="logOut()" style="font-size: 1.1rem;margin-right: 40px">Log Out</a>-->
+  </div>
+  <i #menuIcon class="bx bx-menu" id="menu-icon" (click)="toggleMenu()">
+  </i>
+</header>
+<hr style=" border: 1px solid white;position: relative;margin: 65px 0; width: 100%;z-index: 99">

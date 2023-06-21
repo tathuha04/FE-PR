@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="content">
+    <h1 style="font-weight: 600">Category</h1>
+  </div>
+
+  <div class="gallery">
+    <div *ngFor="let ctg of listCategory" class="gallery-item col-lg-6" tabindex="0">
+      <a href="">
+        <img src="{{ctg.avatar}}"
+             class="gallery-image" alt="">
+      </a>
+      <div class="info">
+        <a href=""><h4>{{ctg.name}}</h4></a>
+<!--        <a href=""><span>Tên ca sĩ</span></a>-->
+      </div>
+    </div>
+
+
+  </div>
+  <button (click)="openDialogCreate()" type="submit" mat-stroked-button color="accent"
+          class="mat-button-toggle-group btn-outline-primary">
+    Create Category
+    <mat-icon color="accent" matSuffix>add_circle_outline</mat-icon>
+  </button>
+  <mat-paginator [length]="totalElements"
+                 (page)="nextPage($event)"
+                 [pageSizeOptions]="[5, 10, 15, 100]"
+                 aria-label="Select page">
+  </mat-paginator>
+</div>
