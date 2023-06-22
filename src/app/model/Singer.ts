@@ -1,14 +1,20 @@
+import {Nation} from "./Nation";
+
 export class Singer{
   public name?:string;
-  public avatar?:string;
-  public description?:string;
+  public sex?:string;
+  public nation?:string;
   public birthday?:any
+  public description?:string;
+  public avatar?:string;
 
 
-  constructor(name: string, avatar: string, description: string, birthday: any) {
+  constructor(name: string, sex: string, nation: string, birthday: any, description: string, avatar: string) {
     this.name = name;
-    this.avatar = avatar;
-    this.description = description;
+    this.sex = sex;
+    this.nation = nation;
     this.birthday = birthday;
+    this.description = description;
+    this.avatar = avatar;
   }
 }

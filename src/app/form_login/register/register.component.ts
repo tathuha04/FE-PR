@@ -17,7 +17,8 @@ export class RegisterComponent {
 
   emailFormValidate = new FormControl('', [
     Validators.required,
-    Validators.pattern('[a-zA-Z0-9._%+-]+@gmail\\.com$')
+    // Validators.pattern('[a-zA-Z0-9._%+-]+@gmail\\.com$')
+    Validators.pattern('[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]{1,}')
   ])
 
   hide = true;
@@ -34,9 +35,9 @@ export class RegisterComponent {
       this.form.email,
       this.form.password
     )
-    console.log("this signUpForm ---->", this.signUpForm);
+    // console.log("this signUpForm ---->", this.signUpForm);
     this.authService.signUp(this.signUpForm).subscribe(data => {
-      console.log('data ---->', data);
+      // console.log('data ---->', data);
       if (data.message == 'no_user') {
         this.status = 'The username is existed! Please try again!'
       } else if (data.message == 'no_email') {

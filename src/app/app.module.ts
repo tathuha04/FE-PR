@@ -20,12 +20,8 @@ import { LoginComponent } from './form_login/login/login.component';
 import {environment} from "../environments/environment.development";
 import { UploadAvatarComponent } from './upload/upload-avatar/upload-avatar.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-// import { ChildInputComponent } from './input-output/@Input/child-input/child-input.component';
-// import { DadInputComponent } from './input-output/@Input/dad-input/dad-input.component';
 import {AngularFireStorageModule} from "@angular/fire/compat/storage";
 import {AngularFireModule} from "@angular/fire/compat";
-// import { ChildOutputComponent } from './input-output/@output/child-output/child-output.component';
-// import { DadOutputComponent } from './input-output/@output/dad-output/dad-output.component';
 import { ChangeAvatarComponent } from './form_login/change-avatar/change-avatar.component';
 import {AuthInterceptor} from "./service/auth.interceptor";
 import { ListCategoryComponent } from './content/category/list-category/list-category.component';
@@ -38,8 +34,6 @@ import { DeleteCategoryComponent } from './content/category/delete-category/dele
 import { PageCategoryComponent } from './content/category/page-category/page-category.component';
 import { UploadFileComponent } from './upload/upload-file/upload-file.component';
 import {MatProgressBarModule} from "@angular/material/progress-bar";
-// import { PageSongComponent } from './content/song/page-song/page-song.component';
-// import { CreateSongComponent } from './content/song/create-song/create-song.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatListModule} from "@angular/material/list";
 import {NavbarComponent} from "./navbar-footer/navbar/navbar.component";
@@ -48,6 +42,9 @@ import { CreateSingerComponent } from './content/singer/create-singer/create-sin
 import { PageSingerComponent } from './content/singer/page-singer/page-singer.component';
 import { PageSongComponent } from './content/song/page-song/page-song.component';
 import { CreateSongComponent } from './content/song/create-song/create-song.component';
+import {MAT_RADIO_DEFAULT_OPTIONS, MatRadioModule} from "@angular/material/radio";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 
 @NgModule({
@@ -59,10 +56,6 @@ import { CreateSongComponent } from './content/song/create-song/create-song.comp
     RegisterComponent,
     LoginComponent,
     UploadAvatarComponent,
-    // ChildInputComponent,
-    // DadInputComponent,
-    // ChildOutputComponent,
-    // DadOutputComponent,
     ChangeAvatarComponent,
     ListCategoryComponent,
     CreateCategoryComponent,
@@ -74,8 +67,7 @@ import { CreateSongComponent } from './content/song/create-song/create-song.comp
     PageSingerComponent,
     PageSongComponent,
     CreateSongComponent,
-    // PageSongComponent,
-    // CreateSongComponent
+
   ],
   imports: [
     HttpClientModule,
@@ -97,7 +89,10 @@ import { CreateSongComponent } from './content/song/create-song/create-song.comp
     MatProgressBarModule,
     MatSelectModule,
     MatListModule,
-    MatMenuModule
+    MatMenuModule,
+    MatRadioModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}

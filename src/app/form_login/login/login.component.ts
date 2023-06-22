@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit{
       this.form.password
     )
     this.authService.signIn(this.signIpForm).subscribe(data => {
-      console.log("user account -------> ", data);
+      // console.log("user account -------> ", data);
       // @ts-ignore
       if (data.status == 202) {
         this.status = 'Login failed! Please check your account!';

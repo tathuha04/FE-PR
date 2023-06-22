@@ -22,7 +22,7 @@ const routes: Routes = [
   {path:'singer',component:PageSingerComponent},
   {path:'create-singer',component:CreateSingerComponent},
 
-  {path:'song',component:PageSongComponent}
+  {path:'song',component:PageSongComponent},
 ];
 
 @NgModule({

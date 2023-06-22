@@ -19,7 +19,7 @@
       <input name="email" [(ngModel)]="form.email" matInput [formControl]="emailFormValidate" placeholder="Email"
              required/>
       <mat-error *ngIf="emailFormValidate.hasError('required')">The email is required!</mat-error>
-      <mat-error *ngIf="emailFormValidate.hasError('pattern')">The email is invalid! Ex: abc@gmail.com</mat-error>
+      <mat-error *ngIf="emailFormValidate.hasError('pattern')">The email is invalid! Ex: abc@example.com</mat-error>
       <!--      pass-->
 
       <input #password="ngModel" [(ngModel)]="form.password" name="password" matInput

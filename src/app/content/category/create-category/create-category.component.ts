@@ -37,7 +37,6 @@ export class CreateCategoryComponent {
           this.status = 'The name is exist'
         }else {
           this.status = 'Create success';
-
         }
       })
     }
