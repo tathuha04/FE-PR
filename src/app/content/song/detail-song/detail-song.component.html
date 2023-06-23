@@ -1,0 +1,37 @@
+<div class="blog-slider">
+  <div class="blog-slider__wrp swiper-wrapper">
+    <div class="blog-slider__item swiper-slide">
+      <div class="blog-slider__img">
+        <img src="{{song?.avatar}}"
+             alt="">
+      </div>
+      <div class="blog-slider__content">
+        <div class="blog-slider__title">{{song?.name}}</div>
+        <div *ngFor="let singer of song?.singerList">
+          <span class="blog-slider__code">{{singer.name}}</span>
+        </div>
+                <p class="blog-slider__text">{{song?.lyrics}}</p>
+
+        <div class="play_song">
+
+          <div class="btn-song">
+            <button><i class="fa-solid fa-shuffle"></i></button>
+            <button><i class="fa-solid fa-backward-step"></i></button>
+            <!--                        <button><i class="fa-regular fa-circle-play"></i></button>-->
+            <button><i class="fa-regular fa-circle-pause"></i></button>
+            <button><i class="fa-solid fa-forward-step"></i></button>
+            <button><i class="fa-solid fa-repeat"></i></button>
+          </div>
+
+          <div class="music-song">
+            <audio controls [src]="song?.url">
+              <!--                url-->
+            </audio>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -9,6 +9,9 @@ import {CreateCategoryComponent} from "./content/category/create-category/create
 import {CreateSingerComponent} from "./content/singer/create-singer/create-singer.component";
 import {PageSingerComponent} from "./content/singer/page-singer/page-singer.component";
 import {PageSongComponent} from "./content/song/page-song/page-song.component";
+import {CreateSongComponent} from "./content/song/create-song/create-song.component";
+import {DetailSongComponent} from "./content/song/detail-song/detail-song.component";
+import {DetailSingerComponent} from "./content/singer/detail-singer/detail-singer.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -21,8 +24,11 @@ const routes: Routes = [
 
   {path:'singer',component:PageSingerComponent},
   {path:'create-singer',component:CreateSingerComponent},
+  {path:'detail-singer/:id',component:DetailSingerComponent},
 
   {path:'song',component:PageSongComponent},
+  {path:'create-song',component:CreateSongComponent},
+  {path:'detail-song/:id',component:DetailSongComponent},
 ];
 
 @NgModule({

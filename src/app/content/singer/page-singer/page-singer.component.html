@@ -5,12 +5,12 @@
 
   <div class="gallery">
     <div *ngFor="let singer of singerList" class="gallery-item col-lg-6" tabindex="0">
-      <a href="">
+      <a  [routerLink]="['/detail-singer/',singer.id]">
         <img  src="{{singer.avatar}}"
              class="gallery-image" alt="">
       </a>
       <div class="info">
-        <a href=""><h4>{{singer.name}}</h4><marquee behavior="alternate" width="30px"><i class="fa-solid fa-chevrons-right"></i></marquee></a>
+        <a [routerLink]="['/detail-singer/',singer.id]"><h4>{{singer.name}}</h4><marquee behavior="alternate" width="30px"><i class="fa-solid fa-chevrons-right"></i></marquee></a>
       </div>
     </div>
 

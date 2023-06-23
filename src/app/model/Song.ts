@@ -2,6 +2,7 @@ import {Category} from "./Category";
 import {Singer} from "./Singer";
 
 export class Song {
+  public id?:number;
   public name?: string;
   public avatar?: string;
   public lyrics?: string;

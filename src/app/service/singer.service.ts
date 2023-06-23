@@ -24,5 +24,9 @@ export class SingerService {
     const params = request;
     return this.httpClient.get(this.API_SINGER + '/page', {params})
   }
+  findSingerById(id: number): Observable<any> {
+    console.log(id)
+    return this.httpClient.get(this.API_SINGER + '/' + id);
+  }
 }
 

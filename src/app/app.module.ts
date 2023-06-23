@@ -45,6 +45,10 @@ import { CreateSongComponent } from './content/song/create-song/create-song.comp
 import {MAT_RADIO_DEFAULT_OPTIONS, MatRadioModule} from "@angular/material/radio";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import { DetailSongComponent } from './content/song/detail-song/detail-song.component';
+import { DetailSingerComponent } from './content/singer/detail-singer/detail-singer.component';
+import { TextComponent } from './content/text/text.component';
+
 
 
 @NgModule({
@@ -67,6 +71,9 @@ import {MatNativeDateModule} from "@angular/material/core";
     PageSingerComponent,
     PageSongComponent,
     CreateSongComponent,
+    DetailSongComponent,
+    DetailSingerComponent,
+    TextComponent,
 
   ],
   imports: [

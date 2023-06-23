@@ -7,6 +7,7 @@ import {CreateSingerComponent} from "../../singer/create-singer/create-singer.co
 import {MatTableDataSource} from "@angular/material/table";
 import {SongService} from "../../../service/song.service";
 import {Song} from "../../../model/Song";
+import {CreateSongComponent} from "../create-song/create-song.component";
 
 @Component({
   selector: 'app-page-song',
@@ -34,18 +35,16 @@ export class PageSongComponent implements OnInit{
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
 
-  // openDialogCreate() {
-  //   const dialogRef = this.dialog.open(CreateSingerComponent)
-  //   dialogRef.afterClosed().subscribe(result =>{
-  //     if (result||result == undefined){
-  //       this.singerService.getListSingerService().subscribe(data =>{
-  //         this.singerList = data;
-  //         this.dataSource = new MatTableDataSource<Singer>(this.singerList);
-  //         this.dataSource.paginator = this.paginator;
-  //       })
-  //     }
-  //   })
-  // }
+  openDialogCreate() {
+    const dialogRef = this.dialog.open(CreateSongComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      if(result||result==undefined){
+
+      }
+    });
+  }
 
 
   nextPage($event: PageEvent) {

@@ -7,6 +7,7 @@ export class Singer{
   public birthday?:any
   public description?:string;
   public avatar?:string;
+  public id?:number;
 
 
   constructor(name: string, sex: string, nation: string, birthday: any, description: string, avatar: string) {

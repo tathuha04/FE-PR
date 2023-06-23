@@ -8,18 +8,19 @@
       <div class="col col-lg-4 songs" *ngFor="let song of listSong">
         <div class="top-song">
           <div class="top-song-img">
-            <a href=""><img
+            <a [routerLink]="['/detail-song/',song.id]"><img
               src="{{song.avatar}}"
               alt=""></a>
           </div>
           <div class="top-song-info">
             <a href=""><h4>{{song.name}}</h4></a>
-            <div *ngFor="let si of song.singerList">
-              <a href=""><span>{{si.name}}</span></a>
+            <div *ngFor="let singer of song.singerList">
+              <a [routerLink]="['/detail-singer/',singer.id]"><span>{{singer.name}}</span></a>
             </div>
           </div>
         </div>
       </div>
+
 
 
       <mat-paginator [length]="totalElements"
@@ -28,5 +29,9 @@
                      aria-label="Select page">
       </mat-paginator>
     </div>
+    <button  (click)="openDialogCreate()" type="submit" mat-stroked-button color="accent"
+             class="mat-button-toggle-group btn-outline-primary">
+      Create Song
+    </button>
   </div>
 </div>
