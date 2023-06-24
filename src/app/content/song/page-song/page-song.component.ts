@@ -1,10 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {single} from "rxjs";
-import {SingerService} from "../../../service/singer.service";
 import {MatDialog} from "@angular/material/dialog";
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
-import {CreateSingerComponent} from "../../singer/create-singer/create-singer.component";
-import {MatTableDataSource} from "@angular/material/table";
 import {SongService} from "../../../service/song.service";
 import {Song} from "../../../model/Song";
 import {CreateSongComponent} from "../create-song/create-song.component";

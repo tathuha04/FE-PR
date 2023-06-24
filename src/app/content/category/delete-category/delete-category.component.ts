@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./delete-category.component.css']
 })
 export class DeleteCategoryComponent {
+  checkUserAdmin= false;
 
 }

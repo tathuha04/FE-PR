@@ -8,10 +8,13 @@ import {Song} from "../model/Song";
   providedIn: 'root'
 })
 export class SongService {
-  private API_SONG = environment.API_SERVER + 'song';
-  // private API_SONG = environment.API_LOCAL + 'song';
+  // private API_SONG = environment.API_SERVER + 'song';
+  private API_SONG = environment.API_LOCAL + 'song';
 
   constructor(private httpClient: HttpClient) {
+  }
+  getListSongService():Observable<any>{
+    return this.httpClient.get(this.API_SONG);
   }
 
   getPageSong(request: any): Observable<any> {

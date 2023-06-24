@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12" style="max-width: 600px;margin: auto;">
+      <mat-card style="background: rgba(255,255,255,0.7)">
+        <h1 style="margin:auto;margin-top: 50px;margin-bottom: 10px;font-weight: 600;color: #333333;text-shadow: 0px 0px 10px #65a4ec">Form Create Playlist</h1>
+        <mat-error  class="alert form-angular">{{status}}</mat-error>
+        <mat-dialog-content class="mat-typography">
+          <form class="form-angular" #f="ngForm" (ngSubmit)="f.form.valid && createPlaylist()" novalidate>
+
+            <input name="name" #name="ngModel" [(ngModel)]="form.name" placeholder="Name" matInput required/>
+            <mat-error *ngIf="name.hasError('required')">The name is required!</mat-error>
+            <mat-error *ngIf="name.hasError('minlength')">The name must at least 3 character!</mat-error>
+<!--            avatar-->
+            <mat-label>Avatar</mat-label>
+            <app-upload-avatar (giveURLtoCreate)="onUpload($event)"></app-upload-avatar>
+            <br>
+
+<!--            <mat-form-field>-->
+<!--              <mat-label>listSinger</mat-label>-->
+<!--              <mat-select  multiple [(ngModel)]="form.songList" name="singerList">-->
+<!--                <mat-option *ngFor="let song of songList" [value]="song">{{song.name}}</mat-option>-->
+<!--              </mat-select>-->
+<!--            </mat-form-field>-->
+
+            <br>
+
+            <button style="margin:auto" mat-stroked-button class="mat-button-toggle-group">Create Playlist</button>
+            <button mat-raised-button color="warn" [mat-dialog-close]="true" cdkFocusInitial>Render list Category</button>
+          </form>
+        </mat-dialog-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

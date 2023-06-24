@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment.development";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
@@ -8,25 +8,34 @@ import {Singer} from "../model/Singer";
   providedIn: 'root'
 })
 export class SingerService {
-  // private API_SINGER = environment.API_LOCAL+'singer';
-  private API_SINGER = environment.API_SERVER+'singer';
+  private API_SINGER = environment.API_LOCAL + 'singer';
+
+  // private API_SINGER = environment.API_SERVER+'singer';
 
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
 
-  getListSingerService():Observable<any>{
+  getListSingerService(): Observable<any> {
     return this.httpClient.get(this.API_SINGER);
   }
-  createSingerService(singer :Singer):Observable<any>{
-    return this.httpClient.post(this.API_SINGER,singer);
+
+  createSingerService(singer: Singer): Observable<any> {
+    return this.httpClient.post(this.API_SINGER, singer);
   }
+
   getPageSinger(request: any): Observable<any> {
     const params = request;
     return this.httpClient.get(this.API_SINGER + '/page', {params})
   }
+
   findSingerById(id: number): Observable<any> {
     console.log(id)
     return this.httpClient.get(this.API_SINGER + '/' + id);
+  }
+
+  updateSinger(id: number, singer: Singer): Observable<any> {
+    return this.httpClient.put(this.API_SINGER + '/' + id, singer);
   }
 }
 

@@ -5,23 +5,28 @@ import {MatPaginator, PageEvent} from "@angular/material/paginator";
 import {MatDialog} from "@angular/material/dialog";
 import {CreateCategoryComponent} from "../create-category/create-category.component";
 import {MatTableDataSource} from "@angular/material/table";
+import {DeleteCategoryComponent} from "../delete-category/delete-category.component";
+import {UpdateCategoryComponent} from "../update-category/update-category.component";
+import {TokenService} from "../../../service/token.service";
 
 @Component({
   selector: 'app-page-category',
   templateUrl: './page-category.component.html',
   styleUrls: ['./page-category.component.css']
 })
-export class PageCategoryComponent implements OnInit{
-  listCategory?:Category[];
-  totalElements:number = 0;
+export class PageCategoryComponent implements OnInit {
+  listCategory?: Category[];
+  totalElements: number = 0;
   dataSource: any;
+  checkUserAdmin = false;
 
   constructor(private categoryService: CategoryService,
-              public dialog:MatDialog) {
+              public dialog: MatDialog,
+              private tokenService: TokenService,) {
   }
 
-  getPageRequest(request: any){
-    this.categoryService.getPageCategory(request).subscribe(data=>{
+  getPageRequest(request: any) {
+    this.categoryService.getPageCategory(request).subscribe(data => {
       console.log('data -->', data)
       this.listCategory = data['content'];
       console.log('content --->', this.listCategory)
@@ -29,31 +34,90 @@ export class PageCategoryComponent implements OnInit{
       console.log('total --->', this.totalElements)
     })
   }
+
   ngOnInit(): void {
-    const request = {page:0,size:5}
+    const request = {page: 0, size: 5}
     this.getPageRequest(request);
+
+    if (this.tokenService.getToken()) {
+      console.log('role ---->', this.tokenService.getRole())
+      if (JSON.stringify(this.tokenService.getRole()) == JSON.stringify(['ADMIN'])) {
+        this.checkUserAdmin = true;
+      }
+      //  console.log('role -->', this.tokenService.getRole())
+      // if(JSON.stringify(this.tokenService.getRole())==JSON.stringify(['ADMIN'])){
+      //   this.checkUserAdmin = true;
+      // }
+      // this.checkUserLogin = true;
+    }
+    this.categoryService.getListCategoryService().subscribe(data => {
+      this.listCategory = data;
+      this.dataSource = new MatTableDataSource<Category>(this.listCategory);
+      this.dataSource.paginator = this.paginator;
+    })
   }
 
-  nextPage($event:PageEvent){
-    const request={};
+
+  nextPage($event: PageEvent) {
+    const request = {};
     // @ts-ignore
     request['page'] = $event.pageIndex.toString();
     // @ts-ignore
     request['size'] = $event.pageSize.toString();
     this.getPageRequest(request);
   }
+
   @ViewChild(MatPaginator) paginator?: MatPaginator;
+
   openDialogCreate() {
-    const dialogRef=this.dialog.open(CreateCategoryComponent);
+    const dialogRef = this.dialog.open(CreateCategoryComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result||result==undefined){
-        this.categoryService.getListCategoryService().subscribe(data =>{
+      if (result || result == undefined) {
+        this.categoryService.getListCategoryService().subscribe(data => {
           this.listCategory = data;
           this.dataSource = new MatTableDataSource<Category>(this.listCategory);
           this.dataSource.paginator = this.paginator;
         })
       }
     })
+  }
+
+  openDialogDelete(id: any) {
+    const dialogRef = this.dialog.open(DeleteCategoryComponent)
+    {
+    }
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+      }
+      this.categoryService.deleteCategory(id).subscribe(() => {
+      })
+      this.categoryService.getListCategoryService().subscribe(data => {
+        this.listCategory = data;
+        this.dataSource = new MatTableDataSource<Category>(this.listCategory);
+        this.dataSource.paginator = this.paginator;
+      })
+    })
+  }
+
+  openDialogUpdate(id: any) {
+    const dialogRef = this.dialog.open(UpdateCategoryComponent, {
+      data: {
+        dataKey: id
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      if (result || result == undefined) {
+        this.categoryService.getListCategoryService().subscribe(data => {
+          this.listCategory = data;
+
+          this.dataSource = new MatTableDataSource<Category>(this.listCategory);
+
+          this.dataSource.paginator = this.paginator;
+        })
+      }
+    });
   }
 }

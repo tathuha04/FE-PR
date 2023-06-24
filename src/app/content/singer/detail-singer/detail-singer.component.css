@@ -95,3 +95,6 @@ section {
 .rounded {
   border-radius: 0.25rem!important;
 }
+.edit:hover{
+  background: #FFFFFF;
+}

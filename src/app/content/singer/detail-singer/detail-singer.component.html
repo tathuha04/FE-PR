@@ -6,11 +6,15 @@
           <div class="card-body p-1-9 p-sm-2-3 p-md-6 p-lg-7">
             <div class="row align-items-center">
               <div class="col-lg-6 mb-4 mb-lg-0">
-                <img src="{{singer?.avatar}}" alt="..." width="300px" height="300px">
+                <img style="border-radius: 50%;margin-left: 50px" src="{{singer?.avatar}}" alt="..." width="300px" height="300px">
               </div>
               <div class="col-lg-6 px-xl-10">
-                <div class="">
+                <div class="" style="display: flex">
                   <h1 class="h2 mb-0" style="font-weight: 600; font-size: 30px">{{singer?.name}}</h1>
+                  <button  style="width: 70px;margin-left: 10px;margin-top: -10px;" mat-menu-item class="edit" *ngIf="checkUserAdmin" (click)="openDialogUpdate(singer?.id)">
+                    <mat-icon>edit
+                    </mat-icon>
+                  </button>
                 </div>
                 <ul class="list-unstyled" style="margin-top: 50px">
                   <li class="mb-2 mb-xl-3 display-28"><b style="font-size: 16px;" class="display-26 ">Birthday: {{singer?.birthday}}</b></li>
@@ -25,6 +29,12 @@
       <div class="col-lg-12 mb-4 mb-sm-5">
         <div>
           <h2 class="section-title  mb-3 mb-sm-4">Description:</h2>
+          <p style="font-size: 16px">{{singer?.description}}</p>
+        </div>
+      </div>
+      <div class="col-lg-12 mb-4 mb-sm-5">
+        <div>
+          <h2 class="section-title  mb-3 mb-sm-4">Album:</h2>
           <p style="font-size: 16px">{{singer?.description}}</p>
         </div>
       </div>

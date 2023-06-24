@@ -48,6 +48,14 @@ import {MatNativeDateModule} from "@angular/material/core";
 import { DetailSongComponent } from './content/song/detail-song/detail-song.component';
 import { DetailSingerComponent } from './content/singer/detail-singer/detail-singer.component';
 import { TextComponent } from './content/text/text.component';
+import { CreatePlaylistComponent } from './content/playlist/create-playlist/create-playlist.component';
+import { MyplaylistComponent } from './content/playlist/myplaylist/myplaylist.component';
+import { DetailPlaylistComponent } from './content/playlist/detail-playlist/detail-playlist.component';
+import { ListSongComponent } from './content/song/list-song/list-song.component';
+import { UpdateSingerComponent } from './content/singer/update-singer/update-singer.component';
+import { DeleteSingerComponent } from './content/singer/delete-singer/delete-singer.component';
+import { DeleteSongComponent } from './content/song/delete-song/delete-song.component';
+import { UpdateSongComponent } from './content/song/update-song/update-song.component';
 
 
 
@@ -74,6 +82,14 @@ import { TextComponent } from './content/text/text.component';
     DetailSongComponent,
     DetailSingerComponent,
     TextComponent,
+    CreatePlaylistComponent,
+    MyplaylistComponent,
+    DetailPlaylistComponent,
+    ListSongComponent,
+    UpdateSingerComponent,
+    DeleteSingerComponent,
+    DeleteSongComponent,
+    UpdateSongComponent,
 
   ],
   imports: [

@@ -1,0 +1,14 @@
+.mat-button-toggle-group:hover{
+  background: #333333;
+  color: white;
+}
+.mat-button-toggle-group{
+  background: #ffffff;
+}
+input {
+  background-color: #eee;
+  border: none;
+  padding: 12px 15px;
+  margin: 8px 0;
+  width: 100%;
+}

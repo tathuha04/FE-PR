@@ -4,7 +4,7 @@
   <ul #navbar class="navbar" id="myTopnav">
     <li><a href="#toptrending">Top Trending</a></li>
     <li><a routerLink="song">Songs</a></li>
-    <li><a routerLink="playlist">Playlist</a></li>
+    <li><a routerLink="#">Playlist</a></li>
     <li><a routerLink="singer">Singer</a></li>
     <li><a routerLink='category'>Category</a></li>
 
@@ -42,6 +42,11 @@
         <mat-icon>manage_accounts</mat-icon>
         <a routerLink="change-avatar" style="color: black">Change avatar</a>
       </button>
+      <button mat-menu-item>
+        <mat-icon>library_music</mat-icon>
+        <a routerLink="playlist" style="color: black">My Playlist</a>
+      </button>
+
       <hr>
       <button mat-menu-item>
         <mat-icon>logout</mat-icon>

@@ -9,9 +9,30 @@
         <img src="{{ctg.avatar}}"
              class="gallery-image" alt="">
       </a>
-      <div class="info">
-        <a href=""><h4>{{ctg.name}}</h4></a>
-<!--        <a href=""><span>Tên ca sĩ</span></a>-->
+      <div style="display: flex">
+        <div class="info" style="width: 80%">
+          <a href=""><h4>{{ctg.name}}</h4></a>
+        </div>
+
+        <div class="info" style="float: right;width: 20%;margin-top: 5px">
+
+          <mat-icon [matMenuTriggerFor]="menu" *ngIf="checkUserAdmin">pending</mat-icon>
+          <mat-menu #menu="matMenu">
+
+            <button mat-menu-item class="delete" *ngIf="checkUserAdmin" (click)="openDialogDelete(ctg.id)">
+              <mat-icon style="color: darkred">delete
+              </mat-icon>
+              Delete
+            </button>
+            <button mat-menu-item class="edit" *ngIf="checkUserAdmin" (click)="openDialogUpdate(ctg.id)">
+              <mat-icon style="color: goldenrod">edit
+              </mat-icon>
+              Edit
+            </button>
+
+          </mat-menu>
+
+        </div>
       </div>
     </div>
 

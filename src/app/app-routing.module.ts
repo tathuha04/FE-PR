@@ -12,6 +12,10 @@ import {PageSongComponent} from "./content/song/page-song/page-song.component";
 import {CreateSongComponent} from "./content/song/create-song/create-song.component";
 import {DetailSongComponent} from "./content/song/detail-song/detail-song.component";
 import {DetailSingerComponent} from "./content/singer/detail-singer/detail-singer.component";
+import {MyplaylistComponent} from "./content/playlist/myplaylist/myplaylist.component";
+import {CreatePlaylistComponent} from "./content/playlist/create-playlist/create-playlist.component";
+import {DetailPlaylistComponent} from "./content/playlist/detail-playlist/detail-playlist.component";
+import {ListSongComponent} from "./content/song/list-song/list-song.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -29,6 +33,11 @@ const routes: Routes = [
   {path:'song',component:PageSongComponent},
   {path:'create-song',component:CreateSongComponent},
   {path:'detail-song/:id',component:DetailSongComponent},
+  {path:'list-song',component:ListSongComponent},
+
+  {path:'playlist',component:MyplaylistComponent},
+  {path:'create-playlist',component:CreatePlaylistComponent},
+  {path:'detail-playlist/:id',component:DetailPlaylistComponent}
 ];
 
 @NgModule({
