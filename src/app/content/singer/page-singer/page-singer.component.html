@@ -5,17 +5,41 @@
 
   <div class="gallery">
     <div *ngFor="let singer of singerList" class="gallery-item col-lg-6" tabindex="0">
-      <a  [routerLink]="['/detail-singer/',singer.id]">
-        <img  src="{{singer.avatar}}"
-             class="gallery-image" alt="">
+      <a [routerLink]="['/detail-singer/',singer.id]">
+        <img src="{{singer.avatar}}"
+             class="gallery-image" alt="" height="205.6px">
       </a>
-      <div class="info">
-        <a [routerLink]="['/detail-singer/',singer.id]"><h4>{{singer.name}}</h4><marquee behavior="alternate" width="30px"><i class="fa-solid fa-chevrons-right"></i></marquee></a>
+      <div class="info" style="display: flex">
+
+        <a [routerLink]="['/detail-singer/',singer.id]"><h4>{{singer.name}}</h4>
+          <marquee behavior="alternate" width="30px"><i class="fa-solid fa-chevrons-right"></i></marquee>
+        </a>
+        <!--        <button  style="width: 70px;margin-left: 10px;margin-top: -10px;" mat-menu-item class="edit" *ngIf="checkUserAdmin" (click)="openDialogUpdate(singer?.id)">-->
+        <!--          <mat-icon>edit-->
+        <!--          </mat-icon>-->
+        <!--        </button>-->
+
+        <mat-icon [matMenuTriggerFor]="menu" *ngIf="checkUserAdmin">pending</mat-icon>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item class="delete" *ngIf="checkUserAdmin" (click)="openDialogDelete(singer.id)">
+            <mat-icon style="color: darkred">delete
+            </mat-icon>
+            Delete
+          </button>
+          <button mat-menu-item class="edit" *ngIf="checkUserAdmin" (click)="openDialogUpdate(singer.id)">
+            <mat-icon style="color: goldenrod">edit
+            </mat-icon>
+            Edit
+          </button>
+        </mat-menu>
       </div>
+
     </div>
 
-
   </div>
+
+  <mat-icon>arrow_back</mat-icon>
+
   <button (click)="openDialogCreate()" type="submit" mat-stroked-button color="accent"
           class="mat-button-toggle-group btn-outline-primary">
     Create Singer

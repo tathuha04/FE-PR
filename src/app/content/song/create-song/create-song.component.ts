@@ -12,29 +12,31 @@ import {Song} from "../../../model/Song";
   templateUrl: './create-song.component.html',
   styleUrls: ['./create-song.component.css']
 })
-export class CreateSongComponent implements OnInit{
-  form:any={};
-  validateCategory= new FormControl('',[
+export class CreateSongComponent implements OnInit {
+  form: any = {};
+  validateCategory = new FormControl('', [
     Validators.required
   ]);
   listCategory: Category[] = [];
   singerList: Singer[] = [];
-  status= '';
-  song?:Song;
-  constructor(private categoryService : CategoryService,
-              private songService :SongService,
+  status = '';
+  song?: Song;
+
+  constructor(private categoryService: CategoryService,
+              private songService: SongService,
               private singerService: SingerService) {
   }
 
   protected readonly onunload = onunload;
+
   // singer: any;
 
   ngOnInit(): void {
-    this.categoryService.getListCategoryService().subscribe(data=>{
+    this.categoryService.getListCategoryService().subscribe(data => {
       this.listCategory = data;
       console.log("listCategory", this.listCategory);
     })
-    this.singerService.getListSingerService().subscribe(data=>{
+    this.singerService.getListSingerService().subscribe(data => {
       this.singerList = data;
     })
   }
@@ -48,15 +50,15 @@ export class CreateSongComponent implements OnInit{
   }
 
   createSong() {
-    if (this.form.category == undefined){
+    if (this.form.category == undefined) {
       this.status = "Choose a category";
       return;
     }
-    if (this.form.avatar == undefined){
+    if (this.form.avatar == undefined) {
       this.status = "Choose avatar";
       return;
     }
-    if (this.form.url == undefined){
+    if (this.form.url == undefined) {
       this.status = "Choose URL";
       return;
 
@@ -73,10 +75,11 @@ export class CreateSongComponent implements OnInit{
     )
     console.log("song", this.song);
 
-    this.songService.createSongService(this.song).subscribe(data=>{
-      console.log("data song : ",data)
-      if (data.message == 'create_success'){
-        this.status='Create Song Success';
+    this.songService.createSongService(this.song).subscribe(data => {
+      console.log("data song : ", data)
+
+      if (data.message == 'create_success') {
+        this.status = 'Create Song Success';
       }
     })
   }

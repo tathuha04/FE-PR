@@ -1,56 +1,34 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {PlaylistService} from "../../../service/playlist.service";
 import {Playlist} from "../../../model/Playlist";
-import {CreateCategoryComponent} from "../../category/create-category/create-category.component";
-import {MatTableDataSource} from "@angular/material/table";
-import {Category} from "../../../model/Category";
 import {MatDialog} from "@angular/material/dialog";
 import {ListSongComponent} from "../../song/list-song/list-song.component";
 import {Song} from "../../../model/Song";
+import {MatTableDataSource} from "@angular/material/table";
+import {MatPaginator} from "@angular/material/paginator";
+import {DeleteCategoryComponent} from "../../category/delete-category/delete-category.component";
+import {PlaylistDTO} from "../../../model/PlaylistDTO";
 
 @Component({
   selector: 'app-detail-playlist',
   templateUrl: './detail-playlist.component.html',
   styleUrls: ['./detail-playlist.component.css']
 })
-export class DetailPlaylistComponent implements OnInit {
+export class DetailPlaylistComponent implements OnInit{
   playlist?: Playlist;
-//
-//   constructor(private act: ActivatedRoute,
-//               private playlistService: PlaylistService) {
-//   }
-//
-//   ngOnInit(): void {
-//     this.act.paramMap.subscribe(playlistId => {
-//       // @ts-ignore
-//       const id = +playlistId.get('id');
-//       console.log("id", id)
-//       this.playlistService.findPlaylistById(id).subscribe(data => {
-//         this.playlist = data;
-//         console.log(data)
-//         console.log("this.playlist    ---->",this.playlist);
-//       })
-//     })
-//
-//   }
-//
-//
-// }
+  displayedColumns: string[] = ['id', 'name', 'avatar','delete'];
+  dataSource: any;
 
-// import {Component, OnInit} from '@angular/core';
-//
-// @Component({
-//   selector: 'app-root',
-//   templateUrl: './app.component.html',
-//   styleUrls: ['./app.component.css']
-// })
-// export class AppComponent implements OnInit{
+  playlistDTO?: PlaylistDTO;
+  @ViewChild(MatPaginator) paginator?: MatPaginator;
+
+
   constructor(private dialog: MatDialog,
               private act: ActivatedRoute,
               private playlistService: PlaylistService) {
   }
-
+  panelOpenState = false;
   previous: any;
   play: any;
   next: any;
@@ -74,36 +52,32 @@ export class DetailPlaylistComponent implements OnInit {
   index_no: number = 0;
 
   playingSong = false;
-
+  listSong: Song[] =[];
 //create a audio Element
 
   track: any;
-  All_song = [
-    {
-      name: "first song",
-      path: "https://firebasestorage.googleapis.com/v0/b/chinhcomhut-cff0e.appspot.com/o/Sneaky-Snitch.mp3?alt=media&token=d69403c6-efd4-45d5-be54-1a071fe4d9d7",
-      img: "https://firebasestorage.googleapis.com/v0/b/chinhcomhut-cff0e.appspot.com/o/luffy1.jpg?alt=media&token=20f255c5-f4c7-4dad-a1fb-df78a2e079d0",
-      singer: "1"
-    }
-    ,
-    {
-      name: "second song",
-      path: "https://firebasestorage.googleapis.com/v0/b/chinhcomhut-cff0e.appspot.com/o/Am-thanh-u-hu-www_tiengdong_com.mp3?alt=media&token=69a26b53-8ede-4477-9f4c-89756ba4ea4e",
-      img: "https://firebasestorage.googleapis.com/v0/b/chinhcomhut-cff0e.appspot.com/o/Nami.webp?alt=media&token=b5787064-d6b9-4a74-8716-8b699026817c",
-      singer: "2"
-    },
-    {
-      name: "Three Song",
-      path: "https://firebasestorage.googleapis.com/v0/b/chinhcomhut-cff0e.appspot.com/o/Sneaky-Snitch.mp3?alt=media&token=d69403c6-efd4-45d5-be54-1a071fe4d9d7",
-      img: "https://firebasestorage.googleapis.com/v0/b/chinhcomhut-cff0e.appspot.com/o/luffy1.jpg?alt=media&token=20f255c5-f4c7-4dad-a1fb-df78a2e079d0",
-      singer: "1"
-    }
-  ];
+  // All_song = [
+  //   {
+  //     name: "first song",
+  //     path: "https://firebasestorage.googleapis.com/v0/b/chinhcomhut-cff0e.appspot.com/o/Sneaky-Snitch.mp3?alt=media&token=d69403c6-efd4-45d5-be54-1a071fe4d9d7",
+  //     img: "https://firebasestorage.googleapis.com/v0/b/chinhcomhut-cff0e.appspot.com/o/luffy1.jpg?alt=media&token=20f255c5-f4c7-4dad-a1fb-df78a2e079d0",
+  //     singer: "1"
+  //   }
+  //   ,
+  //   {
+  //     name: "second song",
+  //     path: "https://firebasestorage.googleapis.com/v0/b/chinhcomhut-cff0e.appspot.com/o/Am-thanh-u-hu-www_tiengdong_com.mp3?alt=media&token=69a26b53-8ede-4477-9f4c-89756ba4ea4e",
+  //     img: "https://firebasestorage.googleapis.com/v0/b/chinhcomhut-cff0e.appspot.com/o/Nami.webp?alt=media&token=b5787064-d6b9-4a74-8716-8b699026817c",
+  //     singer: "2"
+  //   },
+  //   {
+  //     name: "Three Song",
+  //     path: "https://firebasestorage.googleapis.com/v0/b/chinhcomhut-cff0e.appspot.com/o/Sneaky-Snitch.mp3?alt=media&token=d69403c6-efd4-45d5-be54-1a071fe4d9d7",
+  //     img: "https://firebasestorage.googleapis.com/v0/b/chinhcomhut-cff0e.appspot.com/o/luffy1.jpg?alt=media&token=20f255c5-f4c7-4dad-a1fb-df78a2e079d0",
+  //     singer: "1"
+  //   }
+  // ];
 
-  reset_slider() {
-    // @ts-ignore
-    // this.slider.value = 0;
-  }
 
 
   idPlaylist: number = 0;
@@ -117,15 +91,19 @@ export class DetailPlaylistComponent implements OnInit {
         this.playlist = data;
         console.log(data)
         console.log("this.playlist    ---->", this.playlist);
-        this.playlistService.getListSongFromPlaylist(this.idPlaylist).subscribe(data=>{
-          this.listSong = data;
-          console.log(this.listSong , "list Song")
-        })
       })
+    })
+    this.playlistService.getListSongFromPlaylist(this.idPlaylist).subscribe(data=>{
+      this.listSong = data;
+      console.log(this.listSong , "list Song trong onInit")
 
+      this.dataSource = new MatTableDataSource<Song>(this.listSong);
+      this.dataSource.paginator = this.paginator;
+      // this.getListSong();
+      this.load_track(this.index_no)
     })
 
-
+    //
     this.timer = 0;
     this.previous = document.querySelector('#pre');
     this.play = document.querySelector('#play');
@@ -144,19 +122,26 @@ export class DetailPlaylistComponent implements OnInit {
     this.track = document.createElement('audio');
     this.timer = 0;
     // this.autoplay = false;
-    this.index_no = 0;
-    this.load_track(this.index_no)
+    // this.index_no = 0;
+    //
+
+
+  }
+  getListSong(){
+    console.log('fasdfdsafasdfsdafsdafadsfa')
   }
 
   load_track(index_no: any) {
     console.log('index_no ---->', index_no)
+    console.log(this.listSong[index_no],  " song trong load track")
     if (this.timer) {
       clearInterval(this.timer);
     }
     // clearInterval(this.timer);
-    this.resetSlider();
 
-    // this.track.src = this.listSong[index_no].url;
+
+    this.resetSlider();
+    this.track.src = this.listSong[index_no].url;
     // this.title.innerHTML = this.listSong[index_no].name;
     // this.track_image.src = this.listSong[index_no].avatar;
     // this.artist.innerHTML = this.listSong[index_no].singerList;
@@ -191,7 +176,7 @@ export class DetailPlaylistComponent implements OnInit {
   }
 
   nextSong() {
-    if (this.index_no < this.All_song.length - 1) {
+    if (this.index_no < this.listSong.length - 1) {
       this.index_no += 1;
       this.load_track(this.index_no);
       this.playSong();
@@ -212,7 +197,7 @@ export class DetailPlaylistComponent implements OnInit {
       this.playSong();
 
     } else {
-      this.index_no = this.All_song.length;
+      this.index_no = this.listSong.length;
       this.load_track(this.index_no);
       this.playSong();
     }
@@ -231,7 +216,7 @@ export class DetailPlaylistComponent implements OnInit {
   changeDuration() {
     // let slider_position = 0;
     console.log('change')
-    console.log('duraation --->', this.track.duration)
+    console.log('duration --->', this.track.duration)
     console.log('slider va lue -->', this.slider.value)
 
     // @ts-ignore
@@ -240,7 +225,7 @@ export class DetailPlaylistComponent implements OnInit {
   }
 
   mute = false;
-  listSong: Song[] =[];
+
 
   muteSound() {
     this.mute = !this.mute;
@@ -283,7 +268,7 @@ export class DetailPlaylistComponent implements OnInit {
       console.log('this.autoplay ===', this.autoplay)
       if (!this.autoplay) {
         console.log('vao if khong ?????')
-        if (this.index_no < this.All_song.length - 1) {
+        if (this.index_no < this.listSong.length - 1) {
           this.index_no += 1;
         } else {
           console.log('index no trogn else -->', this.index_no)
@@ -318,17 +303,46 @@ export class DetailPlaylistComponent implements OnInit {
       data : {
         dataKey : this.idPlaylist
       }
-
     });
-    //
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result||result==undefined){
-    //     this.categoryService.getListCategoryService().subscribe(data =>{
-    //       this.listCategory = data;
-    //       this.dataSource = new MatTableDataSource<Category>(this.listCategory);
-    //       this.dataSource.paginator = this.paginator;
-    //     })
-    //   }
-    // })
+    dialogRef.afterClosed().subscribe(result => {
+
+      if (result||result == undefined){
+        this.playlistService.getListSongFromPlaylist(this.idPlaylist).subscribe(data=>{
+          this.listSong = data;
+          console.log(this.listSong , "list Song trong onInit")
+          this.dataSource = new MatTableDataSource<Song>(this.listSong);
+          this.dataSource.paginator = this.paginator;
+          // this.getListSong();
+          this.load_track(this.index_no)
+        })
+      }
+    });
+
+  }
+
+  deleteSong(id: number) {
+    const dialogRef = this.dialog.open(DeleteCategoryComponent, {
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result, "result tren")
+      if (result) {
+        this.playlistDTO = new PlaylistDTO(this.idPlaylist, id);
+        this.playlistService.deleteSongInPlaylist(this.playlistDTO).subscribe(() => {
+
+         /// gọi lại api phía backend  ----> cập nhật dữ liệu
+          this.playlistService.getListSongFromPlaylist(this.idPlaylist).subscribe(data=>{
+            this.listSong = data;
+            console.log(this.listSong , "list Song trong onInit")
+            this.dataSource = new MatTableDataSource<Song>(this.listSong);
+            this.dataSource.paginator = this.paginator;
+            // this.getListSong();
+            this.load_track(this.index_no)
+          })
+
+        })
+      }
+    })
+
   }
 }

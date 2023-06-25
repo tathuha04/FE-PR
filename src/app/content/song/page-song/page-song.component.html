@@ -19,18 +19,23 @@
             </div>
           </div>
         </div>
-<!--        <div class="icon" style="width: 30px;float: right; margin-top: -55px;margin-right: 35px">-->
-<!--          <mat-icon style="float: right;margin-bottom: 30px">pending</mat-icon>-->
-<!--        </div>-->
+        <!--        <div class="icon" style="width: 30px;float: right; margin-top: -55px;margin-right: 35px">-->
+        <!--          <mat-icon style="float: right;margin-bottom: 30px">pending</mat-icon>-->
+        <!--        </div>-->
       </div>
 
 
-      <mat-paginator [length]="totalElements"
-                     (page)="nextPage($event)"
-                     [pageSizeOptions]="[6, 12, 24, 120]"
-                     aria-label="Select page">
-      </mat-paginator>
     </div>
-
+    <mat-icon>arrow_back</mat-icon>
   </div>
+  <button (click)="openDialogCreate()" type="submit" mat-stroked-button color="accent"
+          class="mat-button-toggle-group btn-outline-primary">
+    Create Song
+    <mat-icon color="accent" matSuffix>add_circle_outline</mat-icon>
+  </button>
+  <mat-paginator [length]="totalElements"
+                 (page)="nextPage($event)"
+                 [pageSizeOptions]="[6, 12, 24, 120]"
+                 aria-label="Select page">
+  </mat-paginator>
 </div>

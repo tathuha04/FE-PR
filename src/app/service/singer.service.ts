@@ -37,5 +37,10 @@ export class SingerService {
   updateSinger(id: number, singer: Singer): Observable<any> {
     return this.httpClient.put(this.API_SINGER + '/' + id, singer);
   }
+
+  deleteSinger(id: number): Observable<any> {
+    return this.httpClient.delete(this.API_SINGER + '/' + id);
+  }
+
 }
 

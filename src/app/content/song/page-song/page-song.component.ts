@@ -4,6 +4,8 @@ import {MatPaginator, PageEvent} from "@angular/material/paginator";
 import {SongService} from "../../../service/song.service";
 import {Song} from "../../../model/Song";
 import {CreateSongComponent} from "../create-song/create-song.component";
+import {MatTableDataSource} from "@angular/material/table";
+import {Singer} from "../../../model/Singer";
 
 @Component({
   selector: 'app-page-song',
@@ -33,11 +35,15 @@ export class PageSongComponent implements OnInit{
 
   openDialogCreate() {
     const dialogRef = this.dialog.open(CreateSongComponent);
-
     dialogRef.afterClosed().subscribe(result => {
 
-      if(result||result==undefined){
-
+      if (result||result == undefined){
+        this.songService.getPageSong({page:0,size:6}).subscribe(data =>{
+          this.listSong = data;
+          console.log(this.listSong, " log this song")
+          // this.dataSource = new MatTableDataSource<Singer>(this.listSong);
+          // this.dataSource.paginator = this.paginator;
+        })
       }
     });
   }

@@ -32,4 +32,9 @@ export class PlaylistService {
   getListSongFromPlaylist(id:number):Observable<any>{
     return this.httpClient.get(this.API_PLAYLIST+ '/get-songList/' + id);
   }
+
+  deleteSongInPlaylist(playlistDTO: PlaylistDTO):Observable<any>{
+    console.log(playlistDTO, " playlistDTO")
+    return this.httpClient.put(this.API_PLAYLIST+'/delete-song', playlistDTO);
+  }
 }

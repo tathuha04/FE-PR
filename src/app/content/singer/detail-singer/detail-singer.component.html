@@ -9,12 +9,9 @@
                 <img style="border-radius: 50%;margin-left: 50px" src="{{singer?.avatar}}" alt="..." width="300px" height="300px">
               </div>
               <div class="col-lg-6 px-xl-10">
-                <div class="" style="display: flex">
+                <div class="">
                   <h1 class="h2 mb-0" style="font-weight: 600; font-size: 30px">{{singer?.name}}</h1>
-                  <button  style="width: 70px;margin-left: 10px;margin-top: -10px;" mat-menu-item class="edit" *ngIf="checkUserAdmin" (click)="openDialogUpdate(singer?.id)">
-                    <mat-icon>edit
-                    </mat-icon>
-                  </button>
+
                 </div>
                 <ul class="list-unstyled" style="margin-top: 50px">
                   <li class="mb-2 mb-xl-3 display-28"><b style="font-size: 16px;" class="display-26 ">Birthday: {{singer?.birthday}}</b></li>
@@ -40,4 +37,5 @@
       </div>
     </div>
   </div>
+  <mat-icon>arrow_back</mat-icon>
 </section>

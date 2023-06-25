@@ -56,6 +56,8 @@ import { UpdateSingerComponent } from './content/singer/update-singer/update-sin
 import { DeleteSingerComponent } from './content/singer/delete-singer/delete-singer.component';
 import { DeleteSongComponent } from './content/song/delete-song/delete-song.component';
 import { UpdateSongComponent } from './content/song/update-song/update-song.component';
+import { CarouselComponent } from './content/carousel/carousel.component';
+import {MatExpansionModule} from "@angular/material/expansion";
 
 
 
@@ -90,33 +92,35 @@ import { UpdateSongComponent } from './content/song/update-song/update-song.comp
     DeleteSingerComponent,
     DeleteSongComponent,
     UpdateSongComponent,
+    CarouselComponent,
 
   ],
-  imports: [
-    HttpClientModule,
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatCardModule,
-    MatIconModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatDialogModule,
-    FormsModule,
-    MatButtonModule,
-    AngularFireStorageModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    MatProgressSpinnerModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-    MatSelectModule,
-    MatListModule,
-    MatMenuModule,
-    MatRadioModule,
-    MatDatepickerModule,
-    MatNativeDateModule
-  ],
+    imports: [
+        HttpClientModule,
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatCardModule,
+        MatIconModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatDialogModule,
+        FormsModule,
+        MatButtonModule,
+        AngularFireStorageModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        MatProgressSpinnerModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatProgressBarModule,
+        MatSelectModule,
+        MatListModule,
+        MatMenuModule,
+        MatRadioModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatExpansionModule
+    ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
