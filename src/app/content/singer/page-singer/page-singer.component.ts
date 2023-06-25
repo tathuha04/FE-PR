@@ -42,11 +42,8 @@ export class PageSingerComponent implements OnInit{
     const dialogRef = this.dialog.open(CreateSingerComponent)
     dialogRef.afterClosed().subscribe(result =>{
       if (result||result == undefined){
-        this.singerService.getListSingerService().subscribe(data =>{
-          this.singerList = data;
-          this.dataSource = new MatTableDataSource<Singer>(this.singerList);
-          this.dataSource.paginator = this.paginator;
-        })
+        // this.singerService.getPageSinger({page:0,size:5});
+        this.getPageRequest({page:0,size:5})
       }
     })
   }
@@ -66,7 +63,7 @@ export class PageSingerComponent implements OnInit{
     this.getPageRequest(request);
 
     if (this.tokenService.getToken()) {
-      console.log('role ---->', this.tokenService.getRole())
+      // console.log('role ---->', this.tokenService.getRole())
       if (JSON.stringify(this.tokenService.getRole()) == JSON.stringify(['ADMIN'])) {
         this.checkUserAdmin = true;
       }
@@ -79,10 +76,10 @@ export class PageSingerComponent implements OnInit{
     this.act.paramMap.subscribe(singerId =>{
       // @ts-ignore
       const id = +singerId.get('id');
-      console.log("id singer" , singerId)
+      // console.log("id singer" , singerId)
       this.singerService.findSingerById(id).subscribe(data =>{
         this.singer = data;
-        console.log('this.singer', this.singer)
+        // console.log('this.singer', this.singer)
       })
     })
   }
@@ -96,10 +93,10 @@ export class PageSingerComponent implements OnInit{
       }
       this.singerService.deleteSinger(id).subscribe(() => {
       })
-      this.singerService.getListSingerService().subscribe(data => {
+      this.singerService.getPageSinger({page:0,size:5}).subscribe(data => {
         this.singerList = data;
-        this.dataSource = new MatTableDataSource<Category>(this.singerList);
-        this.dataSource.paginator = this.paginator;
+        // this.dataSource = new MatTableDataSource<Category>(this.singerList);
+        // this.dataSource.paginator = this.paginator;
       })
     })
   }
@@ -112,12 +109,12 @@ export class PageSingerComponent implements OnInit{
     dialogRef.afterClosed().subscribe(result => {
 
       if (result || result == undefined) {
-        this.singerService.getListSingerService().subscribe(data => {
+        this.singerService.getPageSinger({page:0,size:5}).subscribe(data => {
           this.singer = data;
 
-          // @ts-ignore
-          this.dataSource = new MatTableDataSource<Singer>(this.singer);
-          this.dataSource.paginator = this.paginator;
+          // // @ts-ignore
+          // this.dataSource = new MatTableDataSource<Singer>(this.singer);
+          // this.dataSource.paginator = this.paginator;
         })
       }
     });

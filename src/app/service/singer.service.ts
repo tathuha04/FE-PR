@@ -21,6 +21,7 @@ export class SingerService {
   }
 
   createSingerService(singer: Singer): Observable<any> {
+    console.log("singer sẻv", singer)
     return this.httpClient.post(this.API_SINGER, singer);
   }
 
@@ -35,6 +36,7 @@ export class SingerService {
   }
 
   updateSinger(id: number, singer: Singer): Observable<any> {
+    console.log("api sev"    , singer)
     return this.httpClient.put(this.API_SINGER + '/' + id, singer);
   }
 

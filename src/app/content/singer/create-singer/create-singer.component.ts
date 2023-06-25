@@ -56,8 +56,10 @@ export class CreateSingerComponent {
     )
     console.log("singer ------->", this.singer)
     this.singerService.createSingerService(this.singer).subscribe(data => {
-      console.log(data)
+      console.log("data ------->" ,data);
+
       if (data.message == 'create_success') {
+        console.log("singer ------->" ,data)
         this.status = 'Create singer success';
       }
     })

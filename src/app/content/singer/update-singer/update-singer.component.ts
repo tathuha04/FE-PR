@@ -45,6 +45,7 @@ export class UpdateSingerComponent implements OnInit {
 
   updateSinger() {
     console.log("đã vào hàm update")
+    console.log( "singer -----------------",this.singer)
 
     // @ts-ignore
     this.singerService.updateSinger(this.singer?.id, this.singer).subscribe(data => {

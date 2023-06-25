@@ -38,12 +38,13 @@ export class PageSongComponent implements OnInit{
     dialogRef.afterClosed().subscribe(result => {
 
       if (result||result == undefined){
-        this.songService.getPageSong({page:0,size:6}).subscribe(data =>{
-          this.listSong = data;
-          console.log(this.listSong, " log this song")
+        // this.songService.getPageSong({page:0,size:6}).subscribe(data =>{
+        //   this.listSong = data;
+        //   console.log(this.listSong, " log this song")
+        this.getPageRequest({page:0,size:6})
           // this.dataSource = new MatTableDataSource<Singer>(this.listSong);
           // this.dataSource.paginator = this.paginator;
-        })
+        // })
       }
     });
   }
