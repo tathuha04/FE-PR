@@ -59,7 +59,7 @@ export class CreateSingerComponent {
       console.log("data ------->" ,data);
 
       if (data.message == 'create_success') {
-        console.log("singer ------->" ,data)
+        console.log("singer ->" ,data)
         this.status = 'Create singer success';
       }
     })

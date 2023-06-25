@@ -21,7 +21,7 @@ export class SingerService {
   }
 
   createSingerService(singer: Singer): Observable<any> {
-    console.log("singer sẻv", singer)
+    console.log("singer service", singer)
     return this.httpClient.post(this.API_SINGER, singer);
   }
 

@@ -96,3 +96,7 @@ a{
 .edit:hover{
   color: goldenrod;
 }
+button:hover{
+  background: dimgrey;
+  color: #FFFFFF;
+}

@@ -329,7 +329,7 @@ export class DetailPlaylistComponent implements OnInit{
       if (result) {
         this.playlistDTO = new PlaylistDTO(this.idPlaylist, id);
         this.playlistService.deleteSongInPlaylist(this.playlistDTO).subscribe(() => {
-
+          console.log("sau khi xóa")
          /// gọi lại api phía backend  ----> cập nhật dữ liệu
           this.playlistService.getListSongFromPlaylist(this.idPlaylist).subscribe(data=>{
             this.listSong = data;

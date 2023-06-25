@@ -1,7 +1,16 @@
 <div class="container">
   <div class="list-music" id="top10-content">
     <div class="content">
+      <mat-icon>arrow_back</mat-icon>
       <h1 style="font-weight: 600">Songs</h1>
+    </div>
+<!--    <button (click)="openDialogCreate()" type="submit" mat-stroked-button color="accent"-->
+<!--            class="mat-button-toggle-group btn-outline-primary">-->
+<!--      Create Song-->
+<!--      <mat-icon color="accent" matSuffix>add_circle_outline</mat-icon>-->
+<!--    </button>-->
+    <div style="margin-bottom: 20px">
+      <button mat-button (click)="openDialogCreate()" type="submit">Create Song <mat-icon>add_circle</mat-icon></button>
     </div>
     <div class="row top-trending">
 
@@ -26,13 +35,8 @@
 
 
     </div>
-    <mat-icon>arrow_back</mat-icon>
   </div>
-  <button (click)="openDialogCreate()" type="submit" mat-stroked-button color="accent"
-          class="mat-button-toggle-group btn-outline-primary">
-    Create Song
-    <mat-icon color="accent" matSuffix>add_circle_outline</mat-icon>
-  </button>
+
   <mat-paginator [length]="totalElements"
                  (page)="nextPage($event)"
                  [pageSizeOptions]="[6, 12, 24, 120]"

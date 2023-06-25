@@ -79,3 +79,7 @@ a {
   height: 80px;
   border-radius: 2px;
 }
+button:hover{
+  background: dimgrey;
+  color: #FFFFFF;
+}
