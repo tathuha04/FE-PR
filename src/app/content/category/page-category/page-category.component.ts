@@ -50,10 +50,10 @@ export class PageCategoryComponent implements OnInit {
       // }
       // this.checkUserLogin = true;
     }
-    this.categoryService.getListCategoryService().subscribe(data => {
+    this.categoryService.getPageCategory(request).subscribe(data => {
       this.listCategory = data;
-      this.dataSource = new MatTableDataSource<Category>(this.listCategory);
-      this.dataSource.paginator = this.paginator;
+      // this.dataSource = new MatTableDataSource<Category>(this.listCategory);
+      // this.dataSource.paginator = this.paginator;
     })
   }
 
@@ -74,10 +74,10 @@ export class PageCategoryComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result || result == undefined) {
-        this.categoryService.getListCategoryService().subscribe(data => {
+        this.categoryService.getPageCategory({page: 0, size: 5}).subscribe(data => {
           this.listCategory = data;
-          this.dataSource = new MatTableDataSource<Category>(this.listCategory);
-          this.dataSource.paginator = this.paginator;
+          // this.dataSource = new MatTableDataSource<Category>(this.listCategory);
+          // this.dataSource.paginator = this.paginator;
         })
       }
     })
@@ -88,7 +88,7 @@ export class PageCategoryComponent implements OnInit {
     {
     }
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result, "result tren")
+      // console.log(result, "result tren")
       if (result) {
         this.categoryService.deleteCategory(id).subscribe(() => {
           this.getPageRequest({page:0, size: 5})
