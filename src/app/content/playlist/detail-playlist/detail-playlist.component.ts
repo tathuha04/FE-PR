@@ -9,15 +9,16 @@ import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {DeleteCategoryComponent} from "../../category/delete-category/delete-category.component";
 import {PlaylistDTO} from "../../../model/PlaylistDTO";
+import {Singer} from "../../../model/Singer";
 
 @Component({
   selector: 'app-detail-playlist',
   templateUrl: './detail-playlist.component.html',
   styleUrls: ['./detail-playlist.component.css']
 })
-export class DetailPlaylistComponent implements OnInit{
+export class DetailPlaylistComponent implements OnInit {
   playlist?: Playlist;
-  displayedColumns: string[] = ['id', 'name', 'avatar','delete'];
+  displayedColumns: string[] = ['id', 'name', 'avatar', 'delete'];
   dataSource: any;
 
   playlistDTO?: PlaylistDTO;
@@ -28,6 +29,7 @@ export class DetailPlaylistComponent implements OnInit{
               private act: ActivatedRoute,
               private playlistService: PlaylistService) {
   }
+
   panelOpenState = false;
   previous: any;
   play: any;
@@ -43,6 +45,8 @@ export class DetailPlaylistComponent implements OnInit{
   total: any;
   artist: any;
   volume_icon: any;
+  singer: Singer[] = [];
+
 
   timer?: number;
 
@@ -52,7 +56,7 @@ export class DetailPlaylistComponent implements OnInit{
   index_no: number = 0;
 
   playingSong = false;
-  listSong: Song[] =[];
+  listSong: Song[] = [];
 //create a audio Element
 
   track: any;
@@ -79,7 +83,6 @@ export class DetailPlaylistComponent implements OnInit{
   // ];
 
 
-
   idPlaylist: number = 0;
 
   ngOnInit(): void {
@@ -93,9 +96,9 @@ export class DetailPlaylistComponent implements OnInit{
         console.log("this.playlist    ---->", this.playlist);
       })
     })
-    this.playlistService.getListSongFromPlaylist(this.idPlaylist).subscribe(data=>{
+    this.playlistService.getListSongFromPlaylist(this.idPlaylist).subscribe(data => {
       this.listSong = data;
-      console.log(this.listSong , "list Song trong onInit")
+      console.log(this.listSong, "list Song trong onInit")
 
       this.dataSource = new MatTableDataSource<Song>(this.listSong);
       this.dataSource.paginator = this.paginator;
@@ -124,16 +127,18 @@ export class DetailPlaylistComponent implements OnInit{
     // this.autoplay = false;
     // this.index_no = 0;
     //
-
+    // this.listSong = [];
 
   }
-  getListSong(){
+
+  getListSong() {
     console.log('fasdfdsafasdfsdafsdafadsfa')
   }
 
   load_track(index_no: any) {
+
     console.log('index_no ---->', index_no)
-    console.log(this.listSong[index_no],  " song trong load track")
+    console.log(this.listSong[index_no], " song trong load track")
     if (this.timer) {
       clearInterval(this.timer);
     }
@@ -142,9 +147,13 @@ export class DetailPlaylistComponent implements OnInit{
 
     this.resetSlider();
     this.track.src = this.listSong[index_no].url;
-    // this.title.innerHTML = this.listSong[index_no].name;
-    // this.track_image.src = this.listSong[index_no].avatar;
+    this.title.innerHTML = this.listSong[index_no].name;
+    this.track_image.src = this.listSong[index_no].avatar;
     // this.artist.innerHTML = this.listSong[index_no].singerList;
+
+    for (let i = 0; i < this.listSong[index_no].singerList.length; i++) {
+      this.singer.push(this.listSong[index_no].singerList[i]);
+    }
     this.track.load();
 
 
@@ -178,10 +187,12 @@ export class DetailPlaylistComponent implements OnInit{
   nextSong() {
     if (this.index_no < this.listSong.length - 1) {
       this.index_no += 1;
+      this.singer = []
       this.load_track(this.index_no);
       this.playSong();
     } else {
       this.index_no = 0;
+      this.singer = []
       this.load_track(this.index_no);
       this.playSong();
 
@@ -191,6 +202,7 @@ export class DetailPlaylistComponent implements OnInit{
 
 // previous song
   previousSong() {
+    this.singer = []
     if (this.index_no > 0) {
       this.index_no -= 1;
       this.load_track(this.index_no);
@@ -204,6 +216,7 @@ export class DetailPlaylistComponent implements OnInit{
   }
 
   pauseSong() {
+    // this.singer = []
     this.track.pause();
     this.playingSong = false;
     // @ts-ignore
@@ -300,16 +313,16 @@ export class DetailPlaylistComponent implements OnInit{
 
   openDialogCreate() {
     const dialogRef = this.dialog.open(ListSongComponent, {
-      data : {
-        dataKey : this.idPlaylist
+      data: {
+        dataKey: this.idPlaylist
       }
     });
     dialogRef.afterClosed().subscribe(result => {
 
-      if (result||result == undefined){
-        this.playlistService.getListSongFromPlaylist(this.idPlaylist).subscribe(data=>{
+      if (result || result == undefined) {
+        this.playlistService.getListSongFromPlaylist(this.idPlaylist).subscribe(data => {
           this.listSong = data;
-          console.log(this.listSong , "list Song trong onInit")
+          console.log(this.listSong, "list Song trong onInit")
           this.dataSource = new MatTableDataSource<Song>(this.listSong);
           this.dataSource.paginator = this.paginator;
           // this.getListSong();
@@ -321,8 +334,7 @@ export class DetailPlaylistComponent implements OnInit{
   }
 
   deleteSong(id: number) {
-    const dialogRef = this.dialog.open(DeleteCategoryComponent, {
-    });
+    const dialogRef = this.dialog.open(DeleteCategoryComponent, {});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result, "result tren")
@@ -330,10 +342,10 @@ export class DetailPlaylistComponent implements OnInit{
         this.playlistDTO = new PlaylistDTO(this.idPlaylist, id);
         this.playlistService.deleteSongInPlaylist(this.playlistDTO).subscribe(() => {
           console.log("sau khi xóa")
-         /// gọi lại api phía backend  ----> cập nhật dữ liệu
-          this.playlistService.getListSongFromPlaylist(this.idPlaylist).subscribe(data=>{
+          /// gọi lại api phía backend  ----> cập nhật dữ liệu
+          this.playlistService.getListSongFromPlaylist(this.idPlaylist).subscribe(data => {
             this.listSong = data;
-            console.log(this.listSong , "list Song trong onInit")
+            console.log(this.listSong, "list Song trong onInit")
             this.dataSource = new MatTableDataSource<Song>(this.listSong);
             this.dataSource.paginator = this.paginator;
             // this.getListSong();
