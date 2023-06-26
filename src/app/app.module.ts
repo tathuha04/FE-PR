@@ -58,6 +58,7 @@ import { DeleteSongComponent } from './content/song/delete-song/delete-song.comp
 import { UpdateSongComponent } from './content/song/update-song/update-song.component';
 import { CarouselComponent } from './content/carousel/carousel.component';
 import {MatExpansionModule} from "@angular/material/expansion";
+import { PageSearchComponent } from './content/page-search/page-search.component';
 
 
 
@@ -93,6 +94,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
     DeleteSongComponent,
     UpdateSongComponent,
     CarouselComponent,
+    PageSearchComponent,
 
   ],
     imports: [

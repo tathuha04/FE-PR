@@ -1,5 +1,6 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
 import {TokenService} from "../../service/token.service";
+import {SongService} from "../../service/song.service";
 
 @Component({
   selector: 'app-navbar',
@@ -10,8 +11,10 @@ export class NavbarComponent {
   name = '';
   avatar = '';
   checkLogin = false;
+  search ?: string;
 
-  constructor(private tokenService: TokenService) {
+  constructor(private tokenService: TokenService,
+              private songService: SongService) {
   }
 
   ngOnInit(): void {
@@ -26,6 +29,7 @@ export class NavbarComponent {
     sessionStorage.clear();
     window.location.reload();
   }
+
   // @ts-ignore
   @ViewChild('menuIcon') menuIcon: ElementRef;
   // @ts-ignore
@@ -34,5 +38,11 @@ export class NavbarComponent {
   toggleMenu() {
     this.menuIcon.nativeElement.classList.toggle('bx-x');
     this.navbar.nativeElement.classList.toggle('open');
+  }
+
+  searchSong() {
+    console.log("this search     -->", this.search)
+    // @ts-ignore
+    this.songService.setValue(this.search)
   }
 }

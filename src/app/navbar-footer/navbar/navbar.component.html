@@ -10,7 +10,7 @@
 
 
     <div class="searchBox">
-      <input type="text" placeholder="Search">
+      <input routerLink="search" type="text" placeholder="Search" [(ngModel)]="search" (input)="searchSong()">
       <div class="search">
               <span class="icon">
                   <i class="fa-solid fa-magnifying-glass"></i>

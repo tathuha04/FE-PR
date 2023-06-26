@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {environment} from "../../environments/environment.development";
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {Song} from "../model/Song";
 
 @Injectable({
@@ -13,13 +13,20 @@ export class SongService {
 
   constructor(private httpClient: HttpClient) {
   }
-  getListSongService():Observable<any>{
+
+  getListSongService(): Observable<any> {
     return this.httpClient.get(this.API_SONG);
   }
 
   getPageSong(request: any): Observable<any> {
     const params = request;
     return this.httpClient.get(this.API_SONG + '/page', {params})
+  }
+
+  getPageSearchSong(request: any, search: string): Observable<any> {
+    ///search tham so de search
+    const params = request;
+    return this.httpClient.get(this.API_SONG + '/search/' + search, {params})
   }
 
   createSongService(song: Song): Observable<any> {
@@ -30,4 +37,15 @@ export class SongService {
     console.log(id)
     return this.httpClient.get(this.API_SONG + '/' + id);
   }
+
+  private myBehaviorSubject = new BehaviorSubject<string>('');
+
+  setValue(value: string) {
+    this.myBehaviorSubject.next(value);
+  }
+
+  getValue() {
+    return this.myBehaviorSubject.asObservable();
+  }
+
 }
