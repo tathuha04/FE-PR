@@ -60,6 +60,7 @@ import { CarouselComponent } from './content/carousel/carousel.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import { PageSearchComponent } from './content/page-search/page-search.component';
 import { TopTrendingComponent } from './content/song/top-trending/top-trending.component';
+import {CheckLoginGuard} from "./service/CheckLoginGuard";
 
 
 
@@ -126,7 +127,8 @@ import { TopTrendingComponent } from './content/song/top-trending/top-trending.c
         MatExpansionModule
     ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    CheckLoginGuard
   ],
   bootstrap: [AppComponent]
 })

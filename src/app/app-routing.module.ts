@@ -18,11 +18,12 @@ import {DetailPlaylistComponent} from "./content/playlist/detail-playlist/detail
 import {ListSongComponent} from "./content/song/list-song/list-song.component";
 import {PageSearchComponent} from "./content/page-search/page-search.component";
 import {TopTrendingComponent} from "./content/song/top-trending/top-trending.component";
+import {CheckLoginGuard} from "./service/CheckLoginGuard";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'register' ,component: RegisterComponent},
-  {path: 'login' ,component:LoginComponent},
+  {path: 'register' ,component: RegisterComponent, canActivate:[CheckLoginGuard]},
+  {path: 'login' ,component:LoginComponent, canActivate:[CheckLoginGuard]},
   {path:'change-avatar',component:ChangeAvatarComponent},
 
   {path:'category',component:PageCategoryComponent},
