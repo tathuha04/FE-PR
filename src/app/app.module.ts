@@ -59,6 +59,7 @@ import { UpdateSongComponent } from './content/song/update-song/update-song.comp
 import { CarouselComponent } from './content/carousel/carousel.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import { PageSearchComponent } from './content/page-search/page-search.component';
+import { TopTrendingComponent } from './content/song/top-trending/top-trending.component';
 
 
 
@@ -95,6 +96,7 @@ import { PageSearchComponent } from './content/page-search/page-search.component
     UpdateSongComponent,
     CarouselComponent,
     PageSearchComponent,
+    TopTrendingComponent,
 
   ],
     imports: [

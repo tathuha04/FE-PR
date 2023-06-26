@@ -8,8 +8,8 @@ import {Song} from "../model/Song";
   providedIn: 'root'
 })
 export class SongService {
-  private API_SONG = environment.API_SERVER + 'song';
-  // private API_SONG = environment.API_LOCAL + 'song';
+  // private API_SONG = environment.API_SERVER + 'song';
+  private API_SONG = environment.API_LOCAL + 'song';
 
   constructor(private httpClient: HttpClient) {
   }
@@ -51,4 +51,12 @@ export class SongService {
   get3SongRandom():Observable<any>{
     return this.httpClient.get(this.API_SONG + '/randomSong')
   }
+
+  viewSong(id:number):Observable<any> {
+    return this.httpClient.get(this.API_SONG + "/view/" + id);
+  }
+  getTopTrendingSong(){
+    return this.httpClient.get(this.API_SONG + '/trending')
+  }
+
 }

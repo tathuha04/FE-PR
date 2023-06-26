@@ -17,6 +17,7 @@ import {CreatePlaylistComponent} from "./content/playlist/create-playlist/create
 import {DetailPlaylistComponent} from "./content/playlist/detail-playlist/detail-playlist.component";
 import {ListSongComponent} from "./content/song/list-song/list-song.component";
 import {PageSearchComponent} from "./content/page-search/page-search.component";
+import {TopTrendingComponent} from "./content/song/top-trending/top-trending.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -40,7 +41,9 @@ const routes: Routes = [
   {path:'create-playlist',component:CreatePlaylistComponent},
   {path:'detail-playlist/:id',component:DetailPlaylistComponent},
 
-  {path:'search', component: PageSearchComponent}
+  {path:'search', component: PageSearchComponent},
+
+  {path:'topTrending',component:TopTrendingComponent}
 ];
 
 @NgModule({

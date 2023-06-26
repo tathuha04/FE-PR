@@ -29,7 +29,7 @@
           </div>
 
           <div class="music-song">
-            <audio controls [src]="song?.url">
+            <audio controls [src]="song?.url" (timeupdate)="onTimeUpdate($event)">
               <!--                url-->
             </audio>
           </div>

@@ -9,6 +9,7 @@ export class Song {
   public url?: string;
   public category?:Category;
   public singerList:Singer[] = [];
+  public time?: number;
 
 
   constructor(name: string, avatar: string, lyrics: string, url: string, category: Category, singerList: Singer[]) {

@@ -10,6 +10,7 @@ import {Song} from "../../../model/Song";
 })
 export class DetailSongComponent implements OnInit {
   song?: Song;
+  id= 0;
 
   constructor(private act: ActivatedRoute,
               private songService: SongService) {
@@ -18,9 +19,9 @@ export class DetailSongComponent implements OnInit {
   ngOnInit(): void {
     this.act.paramMap.subscribe(songId => {
       // @ts-ignore
-      const id = +songId.get('id');
-      console.log("id", id)
-      this.songService.findSongById(id).subscribe(data => {
+      this.id = +songId.get('id');
+
+      this.songService.findSongById(this.id).subscribe(data => {
         this.song = data;
         console.log(data)
         console.log("this.song    ---->",this.song);
@@ -28,6 +29,18 @@ export class DetailSongComponent implements OnInit {
     })
 
   }
+  count = 0;
+  public onTimeUpdate(value:any){
+    if (value.target.currentTime > 5){
+      if (this.count == 0){
+        this.songService.viewSong(this.id).subscribe(data =>{
+          console.log("dataaaaaaaaaaa",data)
+          return;
+        })
+      }
 
-
+      this.count++;
+    }
+    console.log("current time",value.target.currentTime);
+  }
 }
