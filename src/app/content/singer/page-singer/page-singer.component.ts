@@ -93,11 +93,7 @@ export class PageSingerComponent implements OnInit{
       }
       this.singerService.deleteSinger(id).subscribe(() => {
       })
-      this.singerService.getPageSinger({page:0,size:5}).subscribe(data => {
-        this.singerList = data;
-        // this.dataSource = new MatTableDataSource<Category>(this.singerList);
-        // this.dataSource.paginator = this.paginator;
-      })
+      this.getPageRequest({page:0,size:5})
     })
   }
   openDialogUpdate(id: any) {
@@ -109,13 +105,7 @@ export class PageSingerComponent implements OnInit{
     dialogRef.afterClosed().subscribe(result => {
 
       if (result || result == undefined) {
-        this.singerService.getPageSinger({page:0,size:5}).subscribe(data => {
-          this.singer = data;
-
-          // // @ts-ignore
-          // this.dataSource = new MatTableDataSource<Singer>(this.singer);
-          // this.dataSource.paginator = this.paginator;
-        })
+        this.getPageRequest({page:0,size:5})
       }
     });
   }

@@ -74,11 +74,7 @@ export class PageCategoryComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result || result == undefined) {
-        this.categoryService.getPageCategory({page: 0, size: 5}).subscribe(data => {
-          this.listCategory = data;
-          // this.dataSource = new MatTableDataSource<Category>(this.listCategory);
-          // this.dataSource.paginator = this.paginator;
-        })
+        this.getPageRequest({page: 0, size: 5});
       }
     })
   }
@@ -106,10 +102,7 @@ export class PageCategoryComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result || result == undefined) {
-        this.categoryService.getPageCategory({page: 0, size: 5}).subscribe(data => {
-          this.listCategory = data;
-          this.categoryService.getPageCategory({page: 0, size: 5});
-        })
+        this.getPageRequest({page: 0, size: 5});
       }
     });
   }

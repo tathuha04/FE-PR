@@ -49,7 +49,7 @@
 
             <!--            singer list-->
             <br>
-            <mat-form-field>
+            <mat-form-field  style="width: 100%">
               <mat-label>listSinger</mat-label>
               <mat-select  multiple [(ngModel)]="form.singerList" name="singerList">
                 <mat-option *ngFor="let singer of singerList" [value]="singer">{{singer.name}}</mat-option>
