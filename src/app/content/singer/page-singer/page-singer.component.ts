@@ -67,11 +67,6 @@ export class PageSingerComponent implements OnInit{
       if (JSON.stringify(this.tokenService.getRole()) == JSON.stringify(['ADMIN'])) {
         this.checkUserAdmin = true;
       }
-      //  console.log('role -->', this.tokenService.getRole())
-      // if(JSON.stringify(this.tokenService.getRole())==JSON.stringify(['ADMIN'])){
-      //   this.checkUserAdmin = true;
-      // }
-      // this.checkUserLogin = true;
     }
     this.act.paramMap.subscribe(singerId =>{
       // @ts-ignore

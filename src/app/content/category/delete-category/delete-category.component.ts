@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Category} from "../../../model/Category";
 
 @Component({
   selector: 'app-delete-category',
@@ -6,6 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./delete-category.component.css']
 })
 export class DeleteCategoryComponent {
-  checkUserAdmin= false;
+
 
 }

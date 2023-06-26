@@ -2,17 +2,15 @@
   <div class="list-music" id="top10-content">
     <div class="content">
       <a routerLink="">
-        <mat-icon>arrow_back</mat-icon>
+<!--        <mat-icon>arrow_back</mat-icon>-->
       </a>
       <h1 style="font-weight: 600">Songs</h1>
     </div>
-<!--    <button (click)="openDialogCreate()" type="submit" mat-stroked-button color="accent"-->
-<!--            class="mat-button-toggle-group btn-outline-primary">-->
-<!--      Create Song-->
-<!--      <mat-icon color="accent" matSuffix>add_circle_outline</mat-icon>-->
-<!--    </button>-->
+
     <div style="margin-bottom: 20px">
-      <button mat-button (click)="openDialogCreate()" type="submit">Create Song <mat-icon>add_circle</mat-icon></button>
+      <button mat-button (click)="openDialogCreate()" type="submit" *ngIf="checkUserAdmin">Create Song
+        <mat-icon>add_circle</mat-icon>
+      </button>
     </div>
     <div class="row top-trending">
 
@@ -22,7 +20,6 @@
             <a [routerLink]="['/detail-song/',song.id]"><img
               src="{{song.avatar}}"
               alt=""></a>
-            <p>{{song.time}}</p>
 
           </div>
           <div class="top-song-info">
@@ -30,11 +27,30 @@
             <div *ngFor="let singer of song.singerList">
               <a [routerLink]="['/detail-singer/',singer.id]"><span>{{singer.name}}</span></a>
             </div>
+            <div class="info" style="float: right;width: 20%;margin-top: 5px">
+
+              <mat-icon [matMenuTriggerFor]="menu" *ngIf="checkUserAdmin">pending</mat-icon>
+              <mat-menu #menu="matMenu">
+
+                <button mat-menu-item class="delete" *ngIf="checkUserAdmin" (click)="openDialogDelete(song?.id)">
+                  <mat-icon style="color: darkred">delete
+                  </mat-icon>
+                  Delete
+                </button>
+                <button mat-menu-item class="edit" *ngIf="checkUserAdmin" (click)="openDialogUpdate(song?.id)">
+                  <mat-icon style="color: goldenrod">edit
+                  </mat-icon>
+                  Edit
+                </button>
+
+              </mat-menu>
+
+            </div>
+
           </div>
         </div>
-        <!--        <div class="icon" style="width: 30px;float: right; margin-top: -55px;margin-right: 35px">-->
-        <!--          <mat-icon style="float: right;margin-bottom: 30px">pending</mat-icon>-->
-        <!--        </div>-->
+
+
       </div>
 
 

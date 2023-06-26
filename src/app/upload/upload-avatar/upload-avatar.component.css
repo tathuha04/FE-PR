@@ -2,6 +2,6 @@ input{
   background: #d6d6d6;
 }
 input:hover{
-  background: #333333;
+  background: rgb(178, 177, 177);
   color: #FFFFFF;
 }

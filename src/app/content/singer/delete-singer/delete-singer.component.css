@@ -1,9 +1,18 @@
-.mat-button-toggle-group:hover{
-  background: #333333;
+.primary{
+  background: cornflowerblue;
   color: white;
 }
-.mat-button-toggle-group{
+.primary:hover{
   background: #ffffff;
+  color: #333333;
+}
+.warn:hover{
+  background: #ffffff;
+  color: #333333;
+}
+.warn{
+  background: firebrick;
+  color: white;
 }
 input {
   background-color: #eee;

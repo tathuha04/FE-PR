@@ -4,7 +4,6 @@ import {CategoryService} from "../../../service/category.service";
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
 import {MatDialog} from "@angular/material/dialog";
 import {CreateCategoryComponent} from "../create-category/create-category.component";
-import {MatTableDataSource} from "@angular/material/table";
 import {DeleteCategoryComponent} from "../delete-category/delete-category.component";
 import {UpdateCategoryComponent} from "../update-category/update-category.component";
 import {TokenService} from "../../../service/token.service";
@@ -17,7 +16,6 @@ import {TokenService} from "../../../service/token.service";
 export class PageCategoryComponent implements OnInit {
   listCategory?: Category[];
   totalElements: number = 0;
-  dataSource: any;
   checkUserAdmin = false;
 
   constructor(private categoryService: CategoryService,
@@ -27,11 +25,11 @@ export class PageCategoryComponent implements OnInit {
 
   getPageRequest(request: any) {
     this.categoryService.getPageCategory(request).subscribe(data => {
-      console.log('data -->', data)
+      // console.log('data -->', data)
       this.listCategory = data['content'];
-      console.log('content --->', this.listCategory)
+      // console.log('content --->', this.listCategory)
       this.totalElements = data['totalElements'];
-      console.log('total --->', this.totalElements)
+      // console.log('total --->', this.totalElements)
     })
   }
 
@@ -44,16 +42,9 @@ export class PageCategoryComponent implements OnInit {
       if (JSON.stringify(this.tokenService.getRole()) == JSON.stringify(['ADMIN'])) {
         this.checkUserAdmin = true;
       }
-      //  console.log('role -->', this.tokenService.getRole())
-      // if(JSON.stringify(this.tokenService.getRole())==JSON.stringify(['ADMIN'])){
-      //   this.checkUserAdmin = true;
-      // }
-      // this.checkUserLogin = true;
     }
     this.categoryService.getPageCategory(request).subscribe(data => {
-      this.listCategory = data;
-      // this.dataSource = new MatTableDataSource<Category>(this.listCategory);
-      // this.dataSource.paginator = this.paginator;
+      this.getPageRequest({page: 0, size: 5})
     })
   }
 
@@ -81,8 +72,7 @@ export class PageCategoryComponent implements OnInit {
 
   openDialogDelete(id: any) {
     const dialogRef = this.dialog.open(DeleteCategoryComponent)
-    {
-    }
+
     dialogRef.afterClosed().subscribe(result => {
       // console.log(result, "result tren")
       if (result) {

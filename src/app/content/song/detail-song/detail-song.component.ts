@@ -31,7 +31,7 @@ export class DetailSongComponent implements OnInit {
   }
   count = 0;
   public onTimeUpdate(value:any){
-    if (value.target.currentTime > 5){
+    if (value.target.currentTime > 10){
       if (this.count == 0){
         this.songService.viewSong(this.id).subscribe(data =>{
           console.log("dataaaaaaaaaaa",data)

@@ -1,10 +1,10 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-12" style="max-width: 600px;margin: auto;">
+    <div class="col-12" style="max-width: 600px;margin: auto;min-width: 600px">
       <mat-card style="background: rgba(255,255,255,0.7)">
         <h1
-          style="margin:auto;margin-top: 30px;margin-bottom:10px;font-weight: 600;color: #333333;text-shadow: 0px 0px 10px #65a4ec">
+          style="margin:auto;margin-top: 30px;margin-bottom:10px;font-weight: 600;color: #1E90FF;">
           Form Update Singer</h1>
         <mat-error class="alert form-angular">{{status}}</mat-error>
         <mat-dialog-content class="mat-typography">
@@ -57,9 +57,8 @@
 
             <app-upload-avatar (giveURLtoCreate)="onUpload($event)"></app-upload-avatar>
             <br>
-            <button style="margin:auto" mat-stroked-button class="mat-button-toggle-group" type="submit">Create Category</button>
-            <button mat-raised-button color="warn" [mat-dialog-close]="true" cdkFocusInitial>Render list Singer
-            </button>
+            <button style="margin:auto;width: 50%" mat-stroked-button class="mat-button-toggle-group">Update Singer</button>
+            <button style="width: 50%" class="mat-raised-button" mat-raised-button [mat-dialog-close]="true" cdkFocusInitial>Render list Singer</button>
           </form>
         </mat-dialog-content>
       </mat-card>

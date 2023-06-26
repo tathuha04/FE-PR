@@ -37,11 +37,7 @@ export class ListSongComponent {
       if(JSON.stringify(this.tokenService.getRole())== JSON.stringify(['ADMIN'])){
         this.checkUserAdmin = true;
       }
-      //  console.log('role -->', this.tokenService.getRole())
-      // if(JSON.stringify(this.tokenService.getRole())==JSON.stringify(['ADMIN'])){
-      //   this.checkUserAdmin = true;
-      // }
-      // this.checkUserLogin = true;
+
     }
     this.songService.getListSongService().subscribe(data =>{
       this.listSong = data;

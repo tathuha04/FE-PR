@@ -36,24 +36,23 @@ export class UpdateSingerComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log('data tu inject --->', this.data.dataKey)
+
+    // console.log('data tu inject --->', this.data.dataKey)
     this.singerService.findSingerById(this.data.dataKey).subscribe(data => {
       this.singer = data;
-      console.log('category OLD ------------------>', this.singer)
+      // console.log('category OLD ------------------>', this.singer)
     })
   }
 
   updateSinger() {
-    console.log("đã vào hàm update")
-    console.log( "singer -----------------",this.singer)
+    // console.log("đã vào hàm update")
+    // console.log( "singer -----------------",this.singer)
 
     // @ts-ignore
     this.singerService.updateSinger(this.singer?.id, this.singer).subscribe(data => {
       console.log("data")
       if (data.message == 'no_change') {
         this.status = 'No change';
-      } else if (data.message == 'name_existed') {
-        this.status = 'Name existed!'
       } else if (data.message == 'update_success') {
         this.status = 'Update success!!!'
       }

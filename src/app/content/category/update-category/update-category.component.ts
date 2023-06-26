@@ -24,7 +24,7 @@ export class UpdateCategoryComponent implements OnInit{
     this.categoryService.updateCategory(this.category?.id, this.category).subscribe(data =>{
       console.log('data UPDATE ========================>', data)
       if(data.message=='no_change'){
-        this.status = 'No change'
+        this.status = 'No change';
       } else if(data.message == 'name_existed'){
         this.status ='Name existed!'
       } else if(data.message == 'update_success'){

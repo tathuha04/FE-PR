@@ -9,6 +9,7 @@ import {Song} from "../model/Song";
 })
 export class SongService {
   private API_SONG = environment.API_SERVER + 'song';
+
   // private API_SONG = environment.API_LOCAL + 'song';
 
   constructor(private httpClient: HttpClient) {
@@ -48,15 +49,24 @@ export class SongService {
     return this.myBehaviorSubject.asObservable();
   }
 
-  get3SongRandom():Observable<any>{
+  get3SongRandom(): Observable<any> {
     return this.httpClient.get(this.API_SONG + '/randomSong')
   }
 
-  viewSong(id:number):Observable<any> {
+  viewSong(id: number): Observable<any> {
     return this.httpClient.get(this.API_SONG + "/view/" + id);
   }
-  getTopTrendingSong(){
+
+  getTopTrendingSong() {
     return this.httpClient.get(this.API_SONG + '/trending')
+  }
+
+  deleteSong(id: number): Observable<any> {
+    return this.httpClient.delete(this.API_SONG + '/' + id);
+  }
+
+  updateSong(id: number, song: Song): Observable<any> {
+    return this.httpClient.put(this.API_SONG + '/' + id, song);
   }
 
 }

@@ -1,12 +1,12 @@
 <div class="container">
   <div class="content">
     <a routerLink="">
-      <mat-icon>arrow_back</mat-icon>
+<!--      <mat-icon>arrow_back</mat-icon>-->
     </a>
     <h1 style="font-weight: 600">Singer</h1>
   </div>
   <div style="margin-bottom: 20px">
-    <button mat-button (click)="openDialogCreate()" type="submit">Create Singer <mat-icon>add_circle</mat-icon></button>
+    <button mat-button (click)="openDialogCreate()" *ngIf="checkUserAdmin" type="submit">Create Singer <mat-icon>add_circle</mat-icon></button>
   </div>
   <div class="gallery">
     <div *ngFor="let singer of singerList" class="gallery-item col-lg-6" tabindex="0">
@@ -16,13 +16,8 @@
       </a>
       <div class="info" style="display: flex">
 
-        <a [routerLink]="['/detail-singer/',singer.id]"><h4>{{singer.name}}</h4>
-<!--          <marquee behavior="alternate" width="30px"><i class="fa-solid fa-chevrons-right"></i></marquee>-->
+        <a [routerLink]="['/detail-singer/',singer.id]"  style="width: 80%"><h4>{{singer.name}}</h4>
         </a>
-        <!--        <button  style="width: 70px;margin-left: 10px;margin-top: -10px;" mat-menu-item class="edit" *ngIf="checkUserAdmin" (click)="openDialogUpdate(singer?.id)">-->
-        <!--          <mat-icon>edit-->
-        <!--          </mat-icon>-->
-        <!--        </button>-->
 
         <mat-icon [matMenuTriggerFor]="menu" *ngIf="checkUserAdmin" style="float: right;margin-top: 5px">pending</mat-icon>
         <mat-menu #menu="matMenu">
@@ -42,13 +37,6 @@
     </div>
 
   </div>
-
-
-<!--  <button (click)="openDialogCreate()" type="submit" mat-stroked-button color="accent"-->
-<!--          class="mat-button-toggle-group btn-outline-primary">-->
-<!--    Create Singer-->
-<!--    <mat-icon color="accent" matSuffix>add_circle_outline</mat-icon>-->
-<!--  </button>-->
   <mat-paginator [length]="totalElements"
                  (page)="nextPage($event)"
                  [pageSizeOptions]="[5, 10, 15, 100]"

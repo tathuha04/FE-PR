@@ -1,10 +1,20 @@
-.mat-button-toggle-group:hover{
-  background: #333333;
+.mat-button-toggle-group{
+  background: cornflowerblue;
   color: white;
 }
-.mat-button-toggle-group{
+.mat-button-toggle-group:hover{
   background: #ffffff;
+  color: #333333;
 }
+.mat-raised-button:hover{
+  background: #ffffff;
+  color: #333333;
+}
+.mat-raised-button{
+  background: firebrick;
+  color: white;
+}
+
 input {
   background-color: #eee;
   border: none;
