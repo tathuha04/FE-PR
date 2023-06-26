@@ -48,4 +48,7 @@ export class SongService {
     return this.myBehaviorSubject.asObservable();
   }
 
+  get3SongRandom():Observable<any>{
+    return this.httpClient.get(this.API_SONG + '/randomSong')
+  }
 }

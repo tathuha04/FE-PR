@@ -22,7 +22,6 @@ export class PageSearchComponent {
         this.listSong = [];
         return;
       }
-
       const request = {page: 0, size: 6}
       this.getPageRequest(request, this.search);
     })
