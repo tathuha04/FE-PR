@@ -27,11 +27,11 @@
         <div class="blog-slider__content">
           <div class="play-song">
             <div class="btn-song">
-              <button (click)="previousSong()" id="pre"><i id="i_pre" class="fa fa-step-backward" aria-hidden="true"></i>
+              <button style="font-size: x-large;margin:0 5px" (click)="previousSong()" id="pre"><i id="i_pre" class="fa fa-step-backward" aria-hidden="true"></i>
               </button>
-              <button (click)="justPlay()" id="play"><i class="fa fa-play" aria-hidden="true"></i></button>
-              <button (click)="nextSong()" id="next"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
-              <button id="auto" (click)="autoplaySwitch()"><i class="fa-solid fa-repeat" aria-hidden="true"></i>
+              <button style="font-size: x-large" (click)="justPlay()" id="play"><i class="fa fa-play" aria-hidden="true"></i></button>
+              <button style="font-size: x-large" (click)="nextSong()" id="next"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
+              <button style="font-size: x-large" id="auto" (click)="autoplaySwitch()"><i class="fa-solid fa-repeat" aria-hidden="true"></i>
               </button>
             </div>
             <!--- song duration part --->
@@ -41,7 +41,7 @@
               </div>
 
               <div class="volume-song">
-                <p id="volume_show">90</p>
+                <p id="volume_show" style="margin-left: 10px">90</p>
                 <!--        <i class="fa fa-volume-up" aria-hidden="true" onclick="mute_sound()" id="volume_icon"></i>-->
                 <i class="bi bi-megaphone" (click)="muteSound()" id="volume_icon"></i>
                 <input type="range" min="0" max="100" value="90" (click)="volumeChange()" id="volume">
