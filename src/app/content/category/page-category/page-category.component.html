@@ -6,7 +6,7 @@
     <h1 style="font-weight: 600">Category</h1>
   </div>
   <div style="margin-bottom: 20px">
-    <button mat-button (click)="openDialogCreate()" type="submit">Create Category <mat-icon>add_circle</mat-icon></button>
+    <button mat-button *ngIf="checkUserAdmin" (click)="openDialogCreate()" type="submit">Create Category <mat-icon>add_circle</mat-icon></button>
   </div>
   <div class="gallery">
     <div *ngFor="let ctg of listCategory" class="gallery-item col-lg-6" tabindex="0">
