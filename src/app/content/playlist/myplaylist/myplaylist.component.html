@@ -6,7 +6,8 @@
   <div class="gallery">
     <div *ngFor="let pll of playlist" class="gallery-item col-lg-6" tabindex="0">
       <a [routerLink]="['/detail-playlist/',pll.id]">
-        <img src="{{pll.avatar}}"
+        <img src="{{pll.avatar}}" width="205.6px"
+             height="205.6px"
              class="gallery-image" alt="">
       </a>
       <div class="info">
@@ -16,11 +17,9 @@
     </div>
 
   </div>
-  <button (click)="openDialogCreate()" type="submit" mat-stroked-button color="accent"
-          class="mat-button-toggle-group btn-outline-primary">
-    Create Playlist
-    <mat-icon color="accent" matSuffix>add_circle_outline</mat-icon>
-  </button>
+  <div style="margin-bottom: 20px">
+    <button mat-button (click)="openDialogCreate()" type="submit">Create Playlist <mat-icon>add_circle</mat-icon></button>
+  </div>
   <!--  <mat-paginator [length]="totalElements"-->
   <!--                 (page)="nextPage($event)"-->
   <!--                 [pageSizeOptions]="[5, 10, 15, 100]"-->

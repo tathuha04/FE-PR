@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-12" style="max-width: 600px;margin: auto;">
+    <div class="col-12" style="max-width: 600px;margin: auto;min-width: 600px">
       <mat-card style="background: rgba(255,255,255,0.7)">
-        <h1 style="margin:auto;margin-top: 50px;margin-bottom: 10px;font-weight: 600;color: #333333;text-shadow: 0px 0px 10px #65a4ec">Form Create Playlist</h1>
+        <h1 style="margin:auto;margin-top: 50px;margin-bottom: 10px;font-weight: 600;color: #1E90FF">Form Create Playlist</h1>
         <mat-error  class="alert form-angular">{{status}}</mat-error>
         <mat-dialog-content class="mat-typography">
           <form class="form-angular" #f="ngForm" (ngSubmit)="f.form.valid && createPlaylist()" novalidate>
@@ -24,8 +24,8 @@
 
             <br>
 
-            <button style="margin:auto" mat-stroked-button class="mat-button-toggle-group">Create Playlist</button>
-            <button mat-raised-button color="warn" [mat-dialog-close]="true" cdkFocusInitial>Render list Category</button>
+            <button style="margin:auto;width: 50%" mat-stroked-button class="mat-button-toggle-group">Create Playlist</button>
+            <button style="width: 50%" class="mat-raised-button" mat-raised-button [mat-dialog-close]="true" cdkFocusInitial>Render Playlist</button>
           </form>
         </mat-dialog-content>
       </mat-card>
