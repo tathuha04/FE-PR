@@ -1,7 +1,7 @@
 export const environment = {
   //API_LOCAL
   API_LOCAL: 'http://localhost:8080/',
-  API_SERVER: 'https://tathuha2-0cee9c8cfd16.herokuapp.com/',
+  API_SERVER: 'https://tathuha3-6f857e08e6cf.herokuapp.com/',
   firebaseConfig: {
     apiKey: "AIzaSyCJo5dIGNlRf2LgeqSsxNZMXv78GfTQ4As",
     authDomain: "tathuha-2045b.firebaseapp.com",
