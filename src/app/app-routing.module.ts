@@ -38,7 +38,7 @@ const routes: Routes = [
   {path:'detail-song/:id',component:DetailSongComponent},
   {path:'list-song',component:ListSongComponent},
 
-  {path:'playlist',component:MyplaylistComponent},
+  {path:'playlist',component:MyplaylistComponent, canActivate:[CheckLoginGuard]},
   {path:'create-playlist',component:CreatePlaylistComponent},
   {path:'detail-playlist/:id',component:DetailPlaylistComponent},
 
