@@ -41,7 +41,7 @@ const routes: Routes = [
 
   {path:'playlist',component:MyplaylistComponent},
   {path:'create-playlist',component:CreatePlaylistComponent},
-  {path:'detail-playlist/:id',component:DetailPlaylistComponent, canActivate:[CheckLogout]},
+  {path:'detail-playlist/:id',component:DetailPlaylistComponent},
 
   {path:'search', component: PageSearchComponent},
 
