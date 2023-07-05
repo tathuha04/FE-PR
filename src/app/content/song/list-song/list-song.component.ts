@@ -47,7 +47,7 @@ export class ListSongComponent {
   }
 
   addSong(id : any) {
-    console.log(id , "id songgggg");
+    console.log(id , "id song");
     this.playlistDTO = new PlaylistDTO(
       this.data.dataKey,
       id
