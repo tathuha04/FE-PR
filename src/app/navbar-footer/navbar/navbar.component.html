@@ -4,7 +4,7 @@
   <ul #navbar class="navbar" id="myTopnav">
     <li><a routerLink="topTrending">Thịnh hành</a></li>
     <li><a routerLink="song">Bài hát</a></li>
-    <li><a routerLink="#">Playlist</a></li>
+    <li><a routerLink="#">Albums</a></li>
     <li><a routerLink="singer">Ca sĩ</a></li>
     <li><a routerLink='category'>Thể loại</a></li>
 
@@ -40,24 +40,21 @@
       <hr>
       <button mat-menu-item>
         <mat-icon>manage_accounts</mat-icon>
-        <a routerLink="change-avatar" style="color: black">Change avatar</a>
+        <a routerLink="change-avatar" style="color: black">Thay đổi ảnh đại diện</a>
       </button>
       <button mat-menu-item>
         <mat-icon>library_music</mat-icon>
-        <a routerLink="playlist" style="color: black">My Playlist</a>
+        <a routerLink="playlist" style="color: black">Thư viện</a>
       </button>
 
       <hr>
       <button mat-menu-item>
         <mat-icon>logout</mat-icon>
-        <a (click)="logOut()" style="font-size: 1.1rem;margin-right: 40px">Log Out</a>
+        <a (click)="logOut()" style="font-size: 1.1rem;margin-right: 40px">Đăng xuất</a>
       </button>
     </mat-menu>
 
 
-<!--    <a routerLink="change-avatar"><img src="{{avatar}}" width="40" height="40" style="border-radius: 50%"></a>-->
-<!--    <a  style="font-size: 1.1rem;margin-left: -20px">{{name}}</a>-->
-<!--    <a (click)="logOut()" style="font-size: 1.1rem;margin-right: 40px">Log Out</a>-->
   </div>
   <i #menuIcon class="bx bx-menu" id="menu-icon" (click)="toggleMenu()">
   </i>

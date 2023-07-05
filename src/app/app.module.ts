@@ -61,6 +61,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import { PageSearchComponent } from './content/page-search/page-search.component';
 import { TopTrendingComponent } from './content/song/top-trending/top-trending.component';
 import {CheckLoginGuard} from "./service/CheckLoginGuard";
+import { PageAlbumComponent } from './content/album/page-album/page-album.component';
 
 
 
@@ -98,6 +99,7 @@ import {CheckLoginGuard} from "./service/CheckLoginGuard";
     CarouselComponent,
     PageSearchComponent,
     TopTrendingComponent,
+    PageAlbumComponent,
 
   ],
     imports: [
