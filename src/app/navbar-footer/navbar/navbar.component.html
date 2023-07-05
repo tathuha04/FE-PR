@@ -2,11 +2,11 @@
   <a routerLink="" class="logo"><p>My Music</p></a>
 
   <ul #navbar class="navbar" id="myTopnav">
-    <li><a routerLink="topTrending">Top Trending</a></li>
-    <li><a routerLink="song">Songs</a></li>
+    <li><a routerLink="topTrending">Thịnh hành</a></li>
+    <li><a routerLink="song">Bài hát</a></li>
     <li><a routerLink="#">Playlist</a></li>
-    <li><a routerLink="singer">Singer</a></li>
-    <li><a routerLink='category'>Category</a></li>
+    <li><a routerLink="singer">Ca sĩ</a></li>
+    <li><a routerLink='category'>Thể loại</a></li>
 
 
     <div class="searchBox">
@@ -20,8 +20,8 @@
   </ul>
 
   <div class="main" *ngIf="!checkLogin" >
-    <a routerLink="login" class="user">Sign In</a>
-    <a routerLink="register" style="margin-right: 40px">Register</a>
+    <a routerLink="login" class="user">Đăng nhập</a>
+    <a routerLink="register" style="margin-right: 40px">Đăng ký</a>
   </div>
 
   <div class="main" *ngIf="checkLogin">

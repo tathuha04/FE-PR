@@ -242,7 +242,7 @@ export class DetailPlaylistComponent implements OnInit {
 
   muteSound() {
     this.mute = !this.mute;
-    console.log('ths.mute --->', this.mute)
+    // console.log('ths.mute --->', this.mute)
     if (this.mute) {
       this.track.volume = 0;
       this.recent_volume.value = 0;
@@ -280,11 +280,11 @@ export class DetailPlaylistComponent implements OnInit {
       this.play.innerHTML = '<i class="fa fa-play" aria-hidden="true"></i>';
       console.log('this.autoplay ===', this.autoplay)
       if (!this.autoplay) {
-        console.log('vao if khong ?????')
+        // console.log('vao if khong ?????')
         if (this.index_no < this.listSong.length - 1) {
           this.index_no += 1;
         } else {
-          console.log('index no trogn else -->', this.index_no)
+          // console.log('index no trogn else -->', this.index_no)
           this.index_no = 0;
         }
         this.load_track(this.index_no);
