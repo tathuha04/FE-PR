@@ -6,10 +6,10 @@
       <div class="social-container">
         <mat-error style="color: green">{{status}}</mat-error>
       </div>
-      <span> Use your account</span>
+      <span> Đăng nhập bằng tài khoản của bạn</span>
       <input name="username" #username="ngModel" [(ngModel)]="form.username" placeholder="User Name" matInput required/>
-      <mat-error *ngIf="username.hasError('required')">The username is required!</mat-error>
-      <mat-error *ngIf="username.hasError('minlength')">The username must at least 3 character!</mat-error>
+      <mat-error *ngIf="username.hasError('required')">Tên không được để trống!</mat-error>
+<!--      <mat-error *ngIf="username.hasError('minlength')">The username must at least 3 character!</mat-error>-->
       <!--      pass-->
 
       <input #password="ngModel" [(ngModel)]="form.password" name="password" matInput
@@ -17,11 +17,11 @@
       <mat-icon style="color: #333333" (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide" color="accent">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
 
-      <mat-error *ngIf="password.hasError('required')">The password is required!</mat-error>
-      <mat-error *ngIf="password.hasError('minlength')">The password must at least 6 character!
-      </mat-error>
-      <a href="#">Forgot your password?</a>
-      <button type="submit">Sign In</button>
+      <mat-error *ngIf="password.hasError('required')">Mật khẩu không được để trống!</mat-error>
+<!--      <mat-error *ngIf="password.hasError('minlength')">The password must at least 6 character!-->
+<!--      </mat-error>-->
+      <a href="#">Quên mật khẩu?</a>
+      <button type="submit">Đăng nhập</button>
     </form>
   </div>
 
@@ -31,7 +31,7 @@
       <div class="overlay-panel overlay-right">
         <h1>Hello, Friend!</h1>
         <p>Enter your personal details and start journey with us</p>
-        <button class="ghost" id="signUp" ><a routerLink="register">Sign Up</a></button>
+        <button class="ghost" id="signUp" ><a routerLink="register">Đăng kí</a></button>
       </div>
     </div>
   </div>
