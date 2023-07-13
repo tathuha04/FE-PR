@@ -4,11 +4,11 @@
       <a routerLink="">
 <!--        <mat-icon>arrow_back</mat-icon>-->
       </a>
-      <h1 style="font-weight: 600">Songs</h1>
+      <h1 style="font-weight: 600">Bài hát</h1>
     </div>
 
     <div style="margin-bottom: 20px">
-      <button mat-button (click)="openDialogCreate()" type="submit" *ngIf="checkUserAdmin">Create Song
+      <button mat-button (click)="openDialogCreate()" type="submit" *ngIf="checkUserAdmin">Tạo bài hát
         <mat-icon>add_circle</mat-icon>
       </button>
     </div>
@@ -33,12 +33,12 @@
               <mat-menu #menu="matMenu">
 
                 <button mat-menu-item class="delete" *ngIf="checkUserAdmin" (click)="openDialogDelete(song?.id)">
-                  <mat-icon style="color: darkred">delete
+                  <mat-icon style="color: darkred">Xóa
                   </mat-icon>
                   Delete
                 </button>
                 <button mat-menu-item class="edit" *ngIf="checkUserAdmin" (click)="openDialogUpdate(song?.id)">
-                  <mat-icon style="color: goldenrod">edit
+                  <mat-icon style="color: goldenrod">Cập nhật
                   </mat-icon>
                   Edit
                 </button>

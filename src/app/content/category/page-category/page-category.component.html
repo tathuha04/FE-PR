@@ -3,10 +3,10 @@
     <a routerLink="">
 <!--      <mat-icon>arrow_back</mat-icon>-->
     </a>
-    <h1 style="font-weight: 600">Category</h1>
+    <h1 style="font-weight: 600">Thể loại</h1>
   </div>
   <div style="margin-bottom: 20px">
-    <button mat-button *ngIf="checkUserAdmin" (click)="openDialogCreate()" type="submit">Create Category <mat-icon>add_circle</mat-icon></button>
+    <button mat-button *ngIf="checkUserAdmin" (click)="openDialogCreate()" type="submit">Tạo thể loại<mat-icon>add_circle</mat-icon></button>
   </div>
   <div class="gallery">
     <div *ngFor="let ctg of listCategory" class="gallery-item col-lg-6" tabindex="0">
@@ -25,12 +25,12 @@
           <mat-menu #menu="matMenu">
 
             <button mat-menu-item class="delete" *ngIf="checkUserAdmin" (click)="openDialogDelete(ctg.id)">
-              <mat-icon style="color: darkred">delete
+              <mat-icon style="color: darkred">Xóa
               </mat-icon>
               Delete
             </button>
             <button mat-menu-item class="edit" *ngIf="checkUserAdmin" (click)="openDialogUpdate(ctg.id)">
-              <mat-icon style="color: goldenrod">edit
+              <mat-icon style="color: goldenrod">Cập nhật
               </mat-icon>
               Edit
             </button>

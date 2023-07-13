@@ -3,10 +3,10 @@
     <a routerLink="">
 <!--      <mat-icon>arrow_back</mat-icon>-->
     </a>
-    <h1 style="font-weight: 600">Singer</h1>
+    <h1 style="font-weight: 600">Ca sĩ</h1>
   </div>
   <div style="margin-bottom: 20px">
-    <button mat-button (click)="openDialogCreate()" *ngIf="checkUserAdmin" type="submit">Create Singer <mat-icon>add_circle</mat-icon></button>
+    <button mat-button (click)="openDialogCreate()" *ngIf="checkUserAdmin" type="submit">Thêm ca sĩ<mat-icon>add_circle</mat-icon></button>
   </div>
   <div class="gallery">
     <div *ngFor="let singer of singerList" class="gallery-item col-lg-6" tabindex="0">
@@ -22,12 +22,12 @@
         <mat-icon [matMenuTriggerFor]="menu" *ngIf="checkUserAdmin" style="float: right;margin-top: 5px">pending</mat-icon>
         <mat-menu #menu="matMenu">
           <button mat-menu-item class="delete" *ngIf="checkUserAdmin" (click)="openDialogDelete(singer.id)">
-            <mat-icon style="color: darkred">delete
+            <mat-icon style="color: darkred">Xóa
             </mat-icon>
             Delete
           </button>
           <button mat-menu-item class="edit" *ngIf="checkUserAdmin" (click)="openDialogUpdate(singer.id)">
-            <mat-icon style="color: goldenrod">edit
+            <mat-icon style="color: goldenrod">Cập nhật
             </mat-icon>
             Edit
           </button>
