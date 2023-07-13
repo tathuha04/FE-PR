@@ -8,7 +8,7 @@
           <form class="form-angular" #f="ngForm" (ngSubmit)="f.form.valid && createPlaylist()" novalidate>
 
             <input name="name" #name="ngModel" [(ngModel)]="form.name" placeholder="Nhập tên playlist" matInput required/>
-            <mat-error *ngIf="name.hasError('required')">Tên playlist đã tồn tại!</mat-error>
+<!--            <mat-error *ngIf="name.hasError('required')">Tên playlist đã tồn tại!</mat-error>-->
 <!--            <mat-error *ngIf="name.hasError('minlength')">The name must at least 3 character!</mat-error>-->
 <!--            avatar-->
             <mat-label>Chọn ảnh</mat-label>
